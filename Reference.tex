@@ -1,57 +1,68 @@
-\documentclass[12pt]{article}
+\documentclass[hidelinks,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx} % Allows you to insert figures
 \usepackage{amsmath,amssymb,amsthm,mathtools,empheq,tensor,braket} % Allows you to do equations
-\usepackage{hyperref} % Allows linking sections to each other
 \usepackage{fancyhdr} % Formats the header
 \usepackage{geometry} % Formats the paper size, orientation, and margins
+\usepackage{hyperref} % Allows linking sections to each other
+
 \setlength{\parindent}{0pt} % No paragraph indents
 \setlength{\parskip}{1em} % Paragraphs separated by one line
 \renewcommand{\headrulewidth}{0pt} % Removes line in header
 \geometry{legalpaper, portrait, margin=1in}
 \setlength{\headheight}{14.49998pt}
-\newcommand{\pagesetup}{\pagestyle{fancy}
-\fancyhf{}
-\rhead{\thepage}
-\lhead{Stuyvesant Class of 2022; Complex Analysis Reference Sheet}}
+\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022; Complex Analysis Reference Sheet}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+
+%Operations for complex numbers
+\newcommand{\modulus}[1]{\left|#1\right|} % Modulus of a complex number
+\newcommand{\conj}[1]{\overline{#1}} % Conjugate of a complex number
+\newcommand{\nhd}[1]{Nbhd{#1}} % Set of neighborhoods of a point
+\newcommand{\puncnhd}[1]{Nbhd^*{#1}} % Set of punctured neighborhoods of a point
+
 \begin{document}
-\begin{titlepage}
-   \begin{center}
-        \vspace*{5cm}
+  \begin{titlepage}
+     \begin{center}
+          \vspace*{5cm}
 
-        \Huge{Complex Analysis Reference Sheet}
-
-
-        \vspace{3 cm}
-        \Large{Stuyvesant Class of 2022}
-
-        \vspace{0.25cm}
-        \large{Nate Strout, Joshua Yagupsky, Francis Zweifler}
-
-        \vspace{3 cm}
-        \Large{Created February 15th, 2022}
-
-        \vspace{0.25 cm}
-        Complex Calculus, Mr. Stern
+          \Huge{Complex Analysis Reference Sheet}
 
 
-       \vfill
-    \end{center}
-\end{titlepage}
+          \vspace{3 cm}
+          \Large{Stuyvesant Class of 2022}
 
-\thispagestyle{empty}
-\tableofcontents
-\pagebreak
+          \vspace{0.25cm}
+          \large{Nate Strout, Joshua Yagupsky, Francis Zweifler}
 
-\pagesetup
-\section{THE COMPLEX NUMBER SYSTEM}
-\subsection{The Algebra of Complex Numbers}
-\subsection{The Geometry of Complex Numbers}
-\subsubsection{Möbius Transformations and the Riemann Sphere}
-\section{COMPLEX FUNCTIONS}
-\subsection{The Complex Exponential}
-\section{TOPOLOGY OF $\mathbb{C}$}
-\subsection{Compact Sets}
-\subsection{Sequences in $\mathbb{C}$}
-\subsubsection{The Bolzano-Weierstrass Theorem}
+          \vspace{3 cm}
+          \Large{Created February 15th, 2022}
+
+          \vspace{0.25 cm}
+          Complex Calculus, Mr. Stern
+         \vfill
+      \end{center}
+  \end{titlepage}
+
+  \thispagestyle{empty}
+  \tableofcontents
+  \pagebreak
+
+  \pagesetup
+  \section{THE COMPLEX NUMBER SYSTEM}
+  \subsection{The Algebra of Complex Numbers}
+  \subsection{The Geometry of Complex Numbers}
+  \subsubsection{Möbius Transformations and the Riemann Sphere}
+  \section{COMPLEX FUNCTIONS}
+  \subsection{The Complex Exponential}
+  \section{TOPOLOGY OF $\mathbb{C}$}
+  \subsection{Compact Sets}
+  \subsection{Sequences in $\mathbb{C}$}
+  \subsection{Limits of functions, continuity}
+  \begin{definition}[Limit of a function, $(\epsilon, \delta)$ definition]
+    \label{def:edlim}
+    A function $f: D \to \mathbb{C}$ is said to have a \emph{limit} of $L$ as $z \to a$ if $\forall\epsilon > 0, \exists\delta > 0, \forall z \in D: (0 < \modulus{z-a} < \delta \implies \modulus{f(z)-L} < \epsilon)$.
+  \end{definition}
 \end{document}
