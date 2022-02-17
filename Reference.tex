@@ -11,7 +11,8 @@
 \renewcommand{\headrulewidth}{0pt} % Removes line in header
 \geometry{legalpaper, portrait, margin=1in}
 \setlength{\headheight}{14.49998pt}
-\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022; Complex Analysis Reference Sheet}}
+\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022: Complex Analysis Reference Sheet}}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -20,8 +21,6 @@
 %Operations for complex numbers
 \newcommand{\modulus}[1]{\left|#1\right|} % Modulus of a complex number
 \newcommand{\conj}[1]{\overline{#1}} % Conjugate of a complex number
-\newcommand{\nhd}[1]{Nbhd{#1}} % Set of neighborhoods of a point
-\newcommand{\puncnhd}[1]{Nbhd^*{#1}} % Set of punctured neighborhoods of a point
 
 \begin{document}
   \begin{titlepage}
@@ -46,21 +45,52 @@
       \end{center}
   \end{titlepage}
 
-  \thispagestyle{empty}
+  \pagestyle{empty}
   \tableofcontents
-  \pagebreak
+  \cleardoublepage
 
   \pagesetup
   \section{THE COMPLEX NUMBER SYSTEM}
   \subsection{The Algebra of Complex Numbers}
   \subsection{The Geometry of Complex Numbers}
   \subsubsection{Möbius Transformations and the Riemann Sphere}
+
+
   \section{COMPLEX FUNCTIONS}
   \subsection{The Complex Exponential}
+  \subsection{Complex Trigonometry}
+  \subsection{The Argument Functions and Complex Logarithm}
+
+
   \section{TOPOLOGY OF $\mathbb{C}$}
-  \subsection{Compact Sets}
-  \subsection{Sequences in $\mathbb{C}$}
-  \subsection{Limits of functions, continuity}
+  \subsection{Neighborhoods, Open and Closed Sets}
+  \subsubsection{Accumulation Points and the Closure of a Set}
+  \subsection{Connectedness and Compactness}
+  \subsection{Sequences in $\mathbb{C}$, Limits of Sequences}
+  \subsection{Limits of Functions, Continuity}
+  \subsubsection{Continuous Images of Connected and Compact Sets}
+
+
+  \section{COMPLEX DIFFERENTIATION}
+  \subsection{Differentiability and Analyticity}
+  \subsubsection{The Cauchy-Riemann Equations}
+  \subsection{Rules for Derivatives}
+  \subsection{Conformal Maps}
+
+
+  \section{COMPLEX INTEGRATION}
+  \subsection{Real Integrals of Complex Functions}
+  \subsection{Contours and Contour Integration}
+  \subsubsection{Contour Parameterization}
+  \subsection{Introduction to Cauchy's Theorem}
+  \subsubsection{Tile-Centered Regions and the "Not Too Bad" Condition}
+  \subsection{Cauchy's Integral Formula}
+
+  \section{PROPERTIES OF ANALYTIC FUNCTIONS}
+  \subsection{Taylor Series}
+  \subsection{Meromorphic Functions, Classification of Singularities}
+  \subsubsection{Properties of Essential Singularities}
+
   \begin{definition}[Limit of a function, $(\epsilon, \delta)$ definition]
     \label{def:edlim}
     A function $f: D \to \mathbb{C}$ is said to have a \emph{limit} of $L$ as $z \to a$ if $\forall\epsilon > 0, \exists\delta > 0, \forall z \in D: (0 < \modulus{z-a} < \delta \implies \modulus{f(z)-L} < \epsilon)$.
