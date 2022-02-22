@@ -17,6 +17,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
 
 %Operations for complex numbers
 \newcommand{\modulus}[1]{\left|#1\right|} % Modulus of a complex number
@@ -34,7 +35,7 @@
           \Large{Stuyvesant Class of 2022}
 
           \vspace{0.25cm}
-          \large{Nate Strout, Joshua Yagupsky, Francis Zweifler}
+          \large{Nathaniel J. Strout, Joshua L. Yagupsky, Francis Zweifler}
 
           \vspace{3 cm}
           \Large{Created February 15th, 2022}
@@ -52,6 +53,24 @@
   \pagesetup
   \section{THE COMPLEX NUMBER SYSTEM}
   \subsection{The Algebra of Complex Numbers}
+    \begin{definition} [Complex Numbers]
+      \label{def:cmpnum}
+      The \emph{complex numbers} are the set
+      \begin{equation*}
+        \mathbb{C} := \{\,[(a,b)] \mid a,b \in \mathbb{R}\,\}
+      \end{equation*}
+      where
+      \begin{equation*}
+        [(a,b)] :=
+        \begin{cases}
+          a & b = 0 \\
+          (a,b) & b \neq 0
+        \end{cases}
+      \end{equation*}
+    \end{definition}
+    \begin{definition} [Adding Complex Numbers]
+      
+    \end{definition}
   \subsection{The Geometry of Complex Numbers}
   \subsubsection{Möbius Transformations and the Riemann Sphere}
 
@@ -83,16 +102,11 @@
   \subsection{Contours and Contour Integration}
   \subsubsection{Contour Parameterization}
   \subsection{Introduction to Cauchy's Theorem}
-  \subsubsection{Tile-Centered Regions and the "Not Too Bad" Condition}
+  \subsubsection{Tile-Centered Regions and the "Not-Too-Bad" Condition}
   \subsection{Cauchy's Integral Formula}
 
   \section{PROPERTIES OF ANALYTIC FUNCTIONS}
   \subsection{Taylor Series}
   \subsection{Meromorphic Functions, Classification of Singularities}
   \subsubsection{Properties of Essential Singularities}
-
-  \begin{definition}[Limit of a function, $(\epsilon, \delta)$ definition]
-    \label{def:edlim}
-    A function $f: D \to \mathbb{C}$ is said to have a \emph{limit} of $L$ as $z \to a$ if $\forall\epsilon > 0, \exists\delta > 0, \forall z \in D: (0 < \modulus{z-a} < \delta \implies \modulus{f(z)-L} < \epsilon)$.
-  \end{definition}
 \end{document}
