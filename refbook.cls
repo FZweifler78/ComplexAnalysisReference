@@ -37,7 +37,7 @@
      \begin{center}
           \vspace*{5cm}
 
-          \Huge{Complex Analysis Reference Sheet}
+          \Huge{Complex Analysis Reference Book}
 
 
           \vspace{3 cm}
@@ -160,5 +160,9 @@
 \newcommand{\modulus}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\innerprod}[2]{\left<#1,#2\right>}
 \newcommand{\conj}[1]{\overline{#1}} % Conjugate of a complex number
+\newcommand{\nbhd}[1]{\operatorname{\mathcal{N}}(#1)}
+\newcommand{\disk}[2]{\operatorname{D_#2} (#1)}
+\newcommand{\pnbhd}[1]{\operatorname{\mathcal{N^*}}(#1)}
+\newcommand{\pdisk}[2]{\operatorname{D^*_#2} (#1)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{\docformat}
