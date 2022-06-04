@@ -107,7 +107,7 @@
     \begin{boxsec}{\textbf{Lemma \thelemm}:}
   }
   {
-    \begin{boxsec}{\textbf{Lemma \thelemm} (#1):}
+    \begin{boxsec}{\hypertarget{#1}{\textbf{Lemma \thelemm} (#1):}}
   }
 }
 {\end{boxsec}}
@@ -118,7 +118,7 @@
     \begin{boxsec}{\textbf{Theorem \thetheo}:}
   }
   {
-    \begin{boxsec}{\textbf{Theorem \thetheo} (#1):}
+    \begin{boxsec}{\hypertarget{#1}{\textbf{Theorem \thetheo} (#1):}}
   }
 }
 {\end{boxsec}}
@@ -129,7 +129,7 @@
     \begin{boxsec}{\textbf{Definition \thedefi}:}
   }
   {
-    \begin{boxsec}{\textbf{Definition \thedefi} (#1):}
+    \begin{boxsec}{\hypertarget{#1}{\textbf{Definition \thedefi} (#1):}}
   }
 }
 {\end{boxsec}}
@@ -140,7 +140,7 @@
     \begin{boxsec}{\textbf{Corollary \thecoro}:}
   }
   {
-    \begin{boxsec}{\textbf{Corollary \thecoro} (#1):}
+    \begin{boxsec}{\hypertarget{#1}{\textbf{Corollary \thecoro} (#1):}}
   }
 }
 {\end{boxsec}}
@@ -160,9 +160,11 @@
 \newcommand{\modulus}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\innerprod}[2]{\left<#1,#2\right>}
 \newcommand{\conj}[1]{\overline{#1}} % Conjugate of a complex number
-\newcommand{\nbhd}[1]{\operatorname{\mathcal{N}}(#1)}
-\newcommand{\disk}[2]{\operatorname{D_#2} (#1)}
-\newcommand{\pnbhd}[1]{\operatorname{\mathcal{N^*}}(#1)}
-\newcommand{\pdisk}[2]{\operatorname{D^*_#2} (#1)}
+\newcommand{\nbhd}[1]{\operatorname{\mathcal{N}}({#1})}
+\newcommand{\disk}[2]{\operatorname{D_{#2}} ({#1})}
+\newcommand{\pnbhd}[1]{\operatorname{\mathcal{N^*}}({#1})}
+\newcommand{\pdisk}[2]{\operatorname{D^*_{#2}} ({#1})}
+\newcommand{\rnbhd}[2]{\operatorname{\mathcal{N}_{#2}}({#1})}
+\newcommand{\rpnbhd}[2]{\operatorname{\mathcal{N^*}_{#2}}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{\docformat}

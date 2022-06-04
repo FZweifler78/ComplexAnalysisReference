@@ -95,14 +95,35 @@ We write this as $S \in \pnbhd{p}$, where $\pnbhd{p}$ denotes the \emph{puncture
 \begin{definition}[Open Set]
 A set $S$ is called an \emph{open set} iff $\forall z \in S, S \in \nbhd{z}$.
 \end{definition}
-\begin{theorem}[Properties of Open Sets]
+\begin{lemma}[Properties of Open Sets]
 The union of any collection of open sets is open, and the intersection of any \emph{finite} collection of open sets is open.
-\end{theorem}
+\end{lemma}
 \begin{proof}
 The union of any collection of sets is the set containing all of the points in all of the sets. Denote the union as $U$, and let $p$ be an element of one of the sets, $S$. Since $S$ is an open set, it is a neighborhood of $p$, and therefore there exists a $\disk{p}{r} \in S$.
-Since $S$ is a subset of $U$, so is the disk, and since this is true of any point in the union, the union must be open. 
+Since $S$ is a subset of $U$, so is the disk, and since this is true of any point in the union, the union must be open.
+If a point $p$ is in the intersection of a collection of sets $C$, it is in everyone one of the elements of the collection. Since each set in the collection is open, they are all neighborhoods of $p$. For every set $S$ in the collection, there is therefore some radius $r_S$ such that $\disk{p}{r_S} \in S$. Note that we can choose any radius less than or equal to $r_S$ and still get an open disk around $p$ fully contained in $S$
+Since there are only finitely many sets in the collection, we can let $\epsilon = \min r_S$, which will be greater than $0$. But since $\epsilon \leq r_S$ for any $S$, $\disk{p}{\epsilon}$ will be a subset of every $S$, and therefore will be in the intersection. The intersection is therefore a neighborhood of all of its points, making it an open set. 
 \end{proof}
-\subsubsection{Accumulation Points and the Closure of a Set}
+\begin{definition}[Closed Set]
+A set $S \subseteq \mathbb{C}$ is called \emph{closed} iff its complement $S^C$ is open.
+\end{definition}
+\begin{lemma}[Properties of Closed Sets]
+The intersection of any collection of closed sets is closed, and the union of any \emph{finite} collection of closed sets is closed.
+\end{lemma}
+\begin{proof}
+This proof follows directly from De Morgan's Laws for sets and \hyperlink{Properties of Open Sets}{the union and intersection properties of open sets}.
+\begin{definition}[Topology on a Set]
+Given any set $X$, a \emph{topology} on $X$ $\tau_X$ is a collection of subsets called open sets, which satisfy the following properties:
+\begin{itemize}
+\item $\emptyset \in \tau_X, X \in \tau_X$
+\item The union of a collection of elements in $\tau_X$ is in $\tau_X$
+\item The intersection of a \emph{finite} collection of elements in $\tau_X$ is in $\tau_X$
+\end{itemize}
+\end{definition}
+\begin{definition}[Relative Topology]
+Given any type of set in the topology of $\mathbb{C}$ (open set, closed set, open disk, punctured disk, etc.) and some fixed subset $X \subseteq \mathbb{C}$, we can define a type of set \emph{relative} to $X$ as the intersection of that type of set with $X$. For instance, if $N \in \nbhd{p}$ and $p \in X$, then the intersection $N \cap X$ is called a \emph{relative neighborhood} of $p$, denoted as $N \cap X \in \rnbhd{p}{X}$. The collection of all open sets relative to $X$ forms a topology, called the \emph{relative topology} of $X$.
+\end{definition}
+\subsection{Accumulation Points and the Closure of a Set}
 \subsection{Connectedness and Compactness}
 \subsection{Sequences in the Complex Plane, Limits of Sequences}
 \subsection{Limits of Functions, Continuity}
