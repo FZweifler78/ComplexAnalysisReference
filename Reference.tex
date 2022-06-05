@@ -163,8 +163,29 @@ The closure of any set $S$ is a closed set.
 \begin{proof}
 Let $p \in \overline{S}^C$. Since $p$ is not in $S$ nor is it a limit point, there exists a disk around $p$ which is entirely contained in $\overline{S}^C$. The entire complement of the closure is therefore the union of such open disks. But since \hyperlink{Open Disks are Open Sets}{an open disk is an open set} and \hyperlink{Properties of Open Sets}{the union of open sets is open}, the complement of the closure is open, meaning the closure is closed.
 \end{proof}
-\subsection{Connectedness and Compactness}
+\subsection{Interior, Exterior, and Boundary}
+\begin{definition}[Interior of a Set]
+Given any set $S$, its \emph{interior} $\interior{S}$ is defined as the complement of the closure of the complement of $S$.
+\end{definition}
+\begin{lemma}[Properties of the Interior]
+If $S$ is some set, and $\interior{S}$ is its interior, the following will hold:
+\begin{enumerate}
+\item $\interior{S}$ is open.
+\item \begin{equation*} \interior{S} = \{p \in S \mid S \in \nbhd{p}\}\end{equation*}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The interior is an open set because it is the complement of the closure of some other set. Since \hyperlink{Closure of a Set}{the closure of a set is closed}, this means that the interior is open.
+To prove the second part, take any point $p$ in the set where the set is a neighborhood of $p$. Clearly, $p$ is not in the complement of $S$. Since there is a neighborhood of $p$ which does not contain any points in the complement of $S$, namely $S$ itself, it is not a limit point of the complement of $S$. Therefore, $p$ is not in the complement of the closure, and therefore is in the complement of the closure of the complement, also called the interior.
+\end{proof}
+\begin{definition}[Exterior of a Set]
+Given any set $S$, its \emph{exterior} $\exterior{S}$ is defined as the interior of its complement.
+\end{definition}
+\begin{definition}[Boundary of a Set]
+Given any set $S$, its \emph{boundary} $\boundary{S}$ consists of all points not in the interior of exterior of $S$.
+\end{definition}
 \subsection{Sequences in the Complex Plane, Limits of Sequences}
+\subsection{Connectedness and Compactness}
 \subsection{Limits of Functions, Continuity}
 \subsubsection{Continuous Images of Connected and Compact Sets}
 
@@ -176,6 +197,8 @@ Let $p \in \overline{S}^C$. Since $p$ is not in $S$ nor is it a limit point, the
 \subsection{Conformal Maps}
 
 
+
+
 \section{COMPLEX INTEGRATION}
 \subsection{Real Integrals of Complex Functions}
 \subsection{Contours and Contour Integration}
@@ -183,11 +206,13 @@ Let $p \in \overline{S}^C$. Since $p$ is not in $S$ nor is it a limit point, the
 \subsection{Introduction to Cauchy's Theorem}
 \subsubsection{Cauchy's Theorem on Tiles}
 \subsubsection{Tile-Centered Regions and the Not-Too-Bad Condition}
-\subsection{Cauchy's Integral Formula}
+\subsection{Cauchy's
+ Integral Formula}
 \subsubsection{Winding Numbers and Continuous Angle Functions}
 
 \section{TAYLOR SERIES AND SINGULARITIES}
-\subsection{Taylor Series}
+\subsection
+{Taylor Series}
 \subsection{Meromorphic Functions, Classification of Singularities}
 \subsubsection{Properties of Essential Singularities}
 

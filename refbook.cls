@@ -166,5 +166,8 @@
 \newcommand{\pdisk}[2]{\operatorname{D^*_{#2}} ({#1})}
 \newcommand{\rnbhd}[2]{\operatorname{\mathcal{N}_{#2}}({#1})}
 \newcommand{\rpnbhd}[2]{\operatorname{\mathcal{N^*}_{#2}}({#1})}
+\newcommand{\boundary}[1]{\operatorname{bd}({#1})}
+\newcommand{\interior}[1]{\operatorname{int}({#1})}
+\newcommand{\exterior}[1]{\operatorname{ext}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{\docformat}
