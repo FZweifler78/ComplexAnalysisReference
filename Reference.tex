@@ -95,6 +95,18 @@ We write this as $S \in \pnbhd{p}$, where $\pnbhd{p}$ denotes the \emph{puncture
 \begin{definition}[Open Set]
 A set $S$ is called an \emph{open set} iff $\forall z \in S, S \in \nbhd{z}$.
 \end{definition}
+\begin{lemma}[Open Disks are Open Sets]
+Any open disk $\disk{p}{r}$ is an open set.
+\end{lemma}
+\begin{proof}
+We need to show that $\disk{p}{r}$ is a neighborhood of everyone one of its points. Let $q \in \disk{p}{r}$. We can show that $\disk{q}{r-\modulus{p-q}} \subseteq \disk{p}{r}$. To do this, pick any point $z$ in the new disk. To show it's in our original disk, we need $\modulus{z-p} < r$. Since $z$ is in the second disk, we can write $\modulus{z-q} < r-\modulus{p-q}$. We can then use the triangle inequality to show that $\modulus{z-p} = \modulus{z-q+q-p} < \modulus{z-q}+\modulus{p-q} < r-\modulus{p-q}+\modulus{p-q} < r$. Therefore, our original open disk contains a smaller open disk around every point, making it a neighborhood of every one of its points, i.e. an open set.
+\end{proof}
+\begin{lemma}[Supersets of Neighborhoods]
+If $N \in \nbhd{p}$ and $N \subseteq M$, $M \in \nbhd{p}$.
+\end{lemma}
+\begin{proof}
+If $N \in \nbhd{p}$, then there exists some $\disk{p}{r} \subseteq N$. Since $N \subseteq M$, $\disk{p}{r} \subseteq M$. Therefore, $M \in \nbhd{p}$.
+\end{proof}
 \begin{lemma}[Properties of Open Sets]
 The union of any collection of open sets is open, and the intersection of any \emph{finite} collection of open sets is open.
 \end{lemma}
@@ -112,6 +124,7 @@ The intersection of any collection of closed sets is closed, and the union of an
 \end{lemma}
 \begin{proof}
 This proof follows directly from De Morgan's Laws for sets and \hyperlink{Properties of Open Sets}{the union and intersection properties of open sets}.
+\end{proof}
 \begin{definition}[Topology on a Set]
 Given any set $X$, a \emph{topology} on $X$ $\tau_X$ is a collection of subsets called open sets, which satisfy the following properties:
 \begin{itemize}
@@ -124,6 +137,32 @@ Given any set $X$, a \emph{topology} on $X$ $\tau_X$ is a collection of subsets 
 Given any type of set in the topology of $\mathbb{C}$ (open set, closed set, open disk, punctured disk, etc.) and some fixed subset $X \subseteq \mathbb{C}$, we can define a type of set \emph{relative} to $X$ as the intersection of that type of set with $X$. For instance, if $N \in \nbhd{p}$ and $p \in X$, then the intersection $N \cap X$ is called a \emph{relative neighborhood} of $p$, denoted as $N \cap X \in \rnbhd{p}{X}$. The collection of all open sets relative to $X$ forms a topology, called the \emph{relative topology} of $X$.
 \end{definition}
 \subsection{Accumulation Points and the Closure of a Set}
+\begin{definition}[Accumulation Point]
+A point $p$ is called an \emph{accumulation point} or \emph{limit point} of a set $S$ iff there does not exist a neigborhood $N \in \nbhd{p}$ such that $N \cap S = \emptyset$.
+\end{definition}
+\begin{lemma}[Accumulation Points of a Closed Set]
+$K \subseteq \mathbb{C}$ is closed iff it contains all of its accumulation points.
+\end{lemma}
+\begin{proof}
+First, we will prove that a closed set contains all of its limit points.
+Suppose for the sake of contradiction that there exists a $p$ which is an accumulation point of $K$ and is in $K^C$. Since $K$ is closed, its complement is open, and therefore is a neighborhood of every one of its points. $p \in K^C$, so $K^C \in \nbhd{p}$. Therefore, there exists some disk centered at $p$ which lies entirely in $K^C$. But this disk is a neighborhood of $p$ which does not contain any points in $K$, which means $p$ cannot be an accumulation point of $S$.
+Now for the converse. Suppose $K$ contains all of its limit points. This means that there isn't a limit point of $K$ in $K^C$. Thus, for any point $p \in K^C$, there exists a neighborhood of $p$ which is entirely in $K^C$. But since \hyperlink{Supersets of Neighborhoods}{any superset of a neighborhood of $p$ is still a neighborhood of $p$}, $K^C \in \nbhd{p}$. $K^C$ is therefore a neighborhood of all of its points, meaning it is open, and $K$ is closed.
+\end{proof}
+\begin{definition}[Closure of a Set]
+Given a set $S$, its \emph{closure} $\overline{S}$ is the union of $S$ and all of its accumulation points.
+\end{definition}
+\begin{lemma}[Closure of a Closed Set]
+$K$ is a closed set iff $\overline{K} = K$.
+\end{lemma}
+\begin{proof}
+Since the closure of a set is the set together with all of its accumulation points, a set equalling its closure means that the set contains all of its limit points. By a \hyperlink{Accumulation Points of a Closed Set}{previous lemma}, this is equivalent to the set being closed.
+\end{proof}
+\begin{lemma}[Closure of a Set is Closed]
+The closure of any set $S$ is a closed set.
+\end{lemma}
+\begin{proof}
+Let $p \in \overline{S}^C$. Since $p$ is not in $S$ nor is it a limit point, there exists a disk around $p$ which is entirely contained in $\overline{S}^C$. The entire complement of the closure is therefore the union of such open disks. But since \hyperlink{Open Disks are Open Sets}{an open disk is an open set} and \hyperlink{Properties of Open Sets}{the union of open sets is open}, the complement of the closure is open, meaning the closure is closed.
+\end{proof}
 \subsection{Connectedness and Compactness}
 \subsection{Sequences in the Complex Plane, Limits of Sequences}
 \subsection{Limits of Functions, Continuity}
