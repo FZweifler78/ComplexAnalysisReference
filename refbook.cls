@@ -169,5 +169,8 @@
 \newcommand{\boundary}[1]{\operatorname{bd}({#1})}
 \newcommand{\interior}[1]{\operatorname{int}({#1})}
 \newcommand{\exterior}[1]{\operatorname{ext}({#1})}
+\newcommand{\seq}[1]{\left({#1}_n\right)^\infty_{n=0}}
+\newcommand{\rpart}[1]{\operatorname{Re}({#1})}
+\newcommand{\ipart}[1]{\operatorname{Im}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{\docformat}
