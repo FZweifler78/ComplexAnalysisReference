@@ -1,0 +1,350 @@
+\section{TOPOLOGY OF THE COMPLEX PLANE}
+\subsection{Neighborhoods, Open and Closed Sets}
+\begin{definition}[Open Disk]
+The \emph{open disk} of radius $r$ around the point $p$ is defined as follows:
+\begin{equation*}\disk{r}{p} = \{z \in \mathbb{C} \mid \modulus{z-p} < r\}\end{equation*}
+\end{definition}
+\begin{definition}[Neighborhood of a Point]
+A set $S \subseteq \mathbb{C}$ is called a \emph{neighborhood} of a point $p$ if there exists some $r > 0$ such that $\disk{p}{r} \subseteq S$.
+We write this as $S \in \nbhd{p}$, where $\nbhd{p}$ denotes the \emph{neighborhood-system} of $p$.
+\end{definition}
+\begin{definition}[Punctured Disk]
+The \emph{punctured disk} of radius $r$ around the point $p$ is defined as follows:
+\begin{equation*}\pdisk{r}{p} = \{z \in \mathbb{C} \mid 0<\modulus{z-p} < r\}\end{equation*}
+\end{definition}
+\begin{definition}[Punctured Neighborhood of a Point]
+A set $S \subseteq \mathbb{C}$ is called a \emph{punctured neighborhood} of a point $p$ if there exists some $r > 0$ such that $\pdisk{p}{r} \subseteq S$ and $p \notin S$.
+We write this as $S \in \pnbhd{p}$, where $\pnbhd{p}$ denotes the \emph{punctured neighborhood-system} of $p$.
+\end{definition}
+\begin{definition}[Open Set]
+A set $S$ is called an \emph{open set} iff $\forall z \in S, S \in \nbhd{z}$.
+\end{definition}
+\begin{lemma}[Open Disks are Open Sets]
+Any open disk $\disk{p}{r}$ is an open set.
+\end{lemma}
+\begin{proof}
+We need to show that $\disk{p}{r}$ is a neighborhood of everyone one of its points. Let $q \in \disk{p}{r}$. We can show that $\disk{q}{r-\modulus{p-q}} \subseteq \disk{p}{r}$. To do this, pick any point $z$ in the new disk. To show it's in our original disk, we need $\modulus{z-p} < r$. Since $z$ is in the second disk, we can write $\modulus{z-q} < r-\modulus{p-q}$. We can then use the triangle inequality to show that $\modulus{z-p} = \modulus{z-q+q-p} < \modulus{z-q}+\modulus{p-q} < r-\modulus{p-q}+\modulus{p-q} < r$. Therefore, our original open disk contains a smaller open disk around every point, making it a neighborhood of every one of its points, i.e. an open set.
+\end{proof}
+\begin{lemma}[Supersets of Neighborhoods]
+If $N \in \nbhd{p}$ and $N \subseteq M$, $M \in \nbhd{p}$.
+\end{lemma}
+\begin{proof}
+If $N \in \nbhd{p}$, then there exists some $\disk{p}{r} \subseteq N$. Since $N \subseteq M$, $\disk{p}{r} \subseteq M$. Therefore, $M \in \nbhd{p}$.
+\end{proof}
+\begin{lemma}[Properties of Open Sets]
+The union of any collection of open sets is open, and the intersection of any \emph{finite} collection of open sets is open.
+\end{lemma}
+\begin{proof}
+The union of any collection of sets is the set containing all of the points in all of the sets. Denote the union as $U$, and let $p$ be an element of one of the sets, $S$. Since $S$ is an open set, it is a neighborhood of $p$, and therefore there exists a $\disk{p}{r} \in S$.
+Since $S$ is a subset of $U$, so is the disk, and since this is true of any point in the union, the union must be open.
+If a point $p$ is in the intersection of a collection of sets $C$, it is in everyone one of the elements of the collection. Since each set in the collection is open, they are all neighborhoods of $p$. For every set $S$ in the collection, there is therefore some radius $r_S$ such that $\disk{p}{r_S} \in S$. Note that we can choose any radius less than or equal to $r_S$ and still get an open disk around $p$ fully contained in $S$
+Since there are only finitely many sets in the collection, we can let $\varepsilon = \min r_S$, which will be greater than $0$. But since $\varepsilon \leq r_S$ for any $S$, $\disk{p}{\varepsilon}$ will be a subset of every $S$, and therefore will be in the intersection. The intersection is therefore a neighborhood of all of its points, making it an open set. 
+\end{proof}
+\begin{definition}[Closed Set]
+A set $S \subseteq \mathbb{C}$ is called \emph{closed} iff its complement $S^C$ is open.
+\end{definition}
+\begin{lemma}[Properties of Closed Sets]
+The intersection of any collection of closed sets is closed, and the union of any \emph{finite} collection of closed sets is closed.
+\end{lemma}
+\begin{proof}
+This proof follows directly from De Morgan's Laws for sets and \hyperlink{Properties of Open Sets}{the union and intersection properties of open sets}.
+\end{proof}
+\begin{definition}[Topology on a Set]
+Given any set $X$, a \emph{topology} on $X$ $\tau_X$ is a collection of subsets called open sets, which satisfy the following properties:
+\begin{itemize}
+\item $\emptyset \in \tau_X, X \in \tau_X$
+\item The union of a collection of elements in $\tau_X$ is in $\tau_X$
+\item The intersection of a \emph{finite} collection of elements in $\tau_X$ is in $\tau_X$
+\end{itemize}
+A neighborhood of a point $p$ in any general topology is a set which contains an open set containing $p$.
+\end{definition}
+\begin{definition}[Relative Topology]
+Given any type of set in the topology of $\mathbb{C}$ (open set, closed set, open disk, punctured disk, etc.) and some fixed subset $X \subseteq \mathbb{C}$, we can define a type of set \emph{relative} to $X$ as the intersection of that type of set with $X$. For instance, if $N \in \nbhd{p}$ and $p \in X$, then the intersection $N \cap X$ is called a \emph{relative neighborhood} of $p$, denoted as $N \cap X \in \rnbhd{p}{X}$. The collection of all open sets relative to $X$ forms a topology, called the \emph{relative topology} of $X$.
+\end{definition}
+\subsection{Accumulation Points and the Closure of a Set}
+\begin{definition}[Accumulation Point]
+A point $p$ is called an \emph{accumulation point} or \emph{limit point} of a set $S$ iff there does not exist a neigborhood $N \in \nbhd{p}$ such that $N \cap S = \emptyset$.
+\end{definition}
+\begin{lemma}[Accumulation Points of a Closed Set]
+$K \subseteq \mathbb{C}$ is closed iff it contains all of its accumulation points.
+\end{lemma}
+\begin{proof}
+First, we will prove that a closed set contains all of its limit points.
+Suppose for the sake of contradiction that there exists a $p$ which is an accumulation point of $K$ and is in $K^C$. Since $K$ is closed, its complement is open, and therefore is a neighborhood of every one of its points. $p \in K^C$, so $K^C \in \nbhd{p}$. Therefore, there exists some disk centered at $p$ which lies entirely in $K^C$. But this disk is a neighborhood of $p$ which does not contain any points in $K$, which means $p$ cannot be an accumulation point of $S$.
+Now for the converse. Suppose $K$ contains all of its limit points. This means that there isn't a limit point of $K$ in $K^C$. Thus, for any point $p \in K^C$, there exists a neighborhood of $p$ which is entirely in $K^C$. But since \hyperlink{Supersets of Neighborhoods}{any superset of a neighborhood of $p$ is still a neighborhood of $p$}, $K^C \in \nbhd{p}$. $K^C$ is therefore a neighborhood of all of its points, meaning it is open, and $K$ is closed.
+\end{proof}
+\begin{definition}[Closure of a Set]
+Given a set $S$, its \emph{closure} $\overline{S}$ is the union of $S$ and all of its accumulation points.
+\end{definition}
+\begin{lemma}[Closure of a Closed Set]
+$K$ is a closed set iff $\overline{K} = K$.
+\end{lemma}
+\begin{proof}
+Since the closure of a set is the set together with all of its accumulation points, a set equalling its closure means that the set contains all of its limit points. By a \hyperlink{Accumulation Points of a Closed Set}{previous lemma}, this is equivalent to the set being closed.
+\end{proof}
+\begin{lemma}[Closure of a Set is Closed]
+The closure of any set $S$ is a closed set.
+\end{lemma}
+\begin{proof}
+Let $p \in \left(\overline{S}\right)^C$. Since $p$ is not in $S$ nor is it a limit point, there exists a disk around $p$ which is entirely contained in $\left(\overline{S}\right)^C$. The entire complement of the closure is therefore the union of such open disks. But since \hyperlink{Open Disks are Open Sets}{an open disk is an open set} and \hyperlink{Properties of Open Sets}{the union of open sets is open}, the complement of the closure is open, meaning the closure is closed.
+\end{proof}
+\subsection{Interior, Exterior, and Boundary}
+\begin{definition}[Interior of a Set]
+Given any set $S$, its \emph{interior} $\interior{S}$ is defined as the complement of the closure of the complement of $S$.
+\end{definition}
+\begin{lemma}[Properties of the Interior]
+If $S$ is some set, and $\interior{S}$ is its interior, the following will hold:
+\begin{enumerate}
+\item $\interior{S}$ is open.
+\item \begin{equation*} \interior{S} = \{p \in S \mid S \in \nbhd{p}\}\end{equation*}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The interior is an open set because it is the complement of the closure of some other set. Since \hyperlink{Closure of a Set}{the closure of a set is closed}, this means that the interior is open.
+To prove the second part, take any point $p$ in the set where the set is a neighborhood of $p$. Clearly, $p$ is not in the complement of $S$. Since there is a neighborhood of $p$ which does not contain any points in the complement of $S$, namely $S$ itself, it is not a limit point of the complement of $S$. Therefore, $p$ is not in the complement of the closure, and therefore is in the complement of the closure of the complement, also called the interior.
+\end{proof}
+\begin{definition}[Exterior of a Set]
+Given any set $S$, its \emph{exterior} $\exterior{S}$ is defined as the interior of its complement.
+\end{definition}
+\begin{definition}[Boundary of a Set]
+Given any set $S$, its \emph{boundary} $\boundary{S}$ consists of all points not in the interior of exterior of $S$.
+\end{definition}
+\subsection{Sequences in the Complex Plane, Limits of Sequences}
+\subsubsection{Basic Results on Sequences}
+\begin{definition}[Sequence]
+Given a set $S$, a \emph{sequence} in $S$ is a function $a : \mathbb{N} \longrightarrow S$. The sequence can be written as $\seq{a}$, and the $n$th member of the sequence is written $a_n$.
+\end{definition}
+\begin{definition}[Topological Limit of a Sequence]
+If $\seq{a} \in S \subseteq X$ and $X$ has a topology, we say the sequence has a \emph{limit} of $a \in X$ iff for every $U \in \nbhd{a}$ there exists some natural number $N$ such that $n>N \implies a_n \in U$.
+\end{definition}
+\begin{definition}[Metric Limit of a Sequence]
+If $\seq{a} \in S \subseteq \mathbb{C}$ we say the sequence has a \emph{limit} of $a \in \mathbb{C}$ iff for every $\varepsilon > 0$ there exists some natural number $N$ such that $n > N \implies \modulus{a_n-a} < \varepsilon$.
+\end{definition}
+\begin{theorem}[Equivalence of Limit Types for Sequences]
+If $\seq{a} \in S \subseteq \mathbb{C}$ then the sequence has a topological limit of $a \in \mathbb{C}$ iff it has a metric limit of $a \in \mathbb{C}$.
+\end{theorem}
+\begin{proof}
+First we will show that a topological limit implies a metric limit. We are given some $\varepsilon > 0$, and we need to find the corresponding $N$ such that all values in the sequence past $N$ are within $\varepsilon$ of $a$. This is equivalent to saying all of the values in the sequence past $N$ are in $\disk{a}{\varepsilon}$. This set is a neighborhood of $a$. Since we know the sequence converges topologically, we can find such an $N$.\\
+Now we will show the converse: a metric limit implies a topological limit. We are given some $U \in \nbhd{a}$, and we need to find the corresponding $N$. Since $U$ is a neighborhood of $a$, there exists some $\disk{a}{r} \subseteq U$. Since we know there is a metric limit, we can find an $N$ such that all sequence elements past $N$ are within $r$ of $a$, i.e. in the disk. Since all of these points are in the disk, they are in $U$. Therefore, all points in the sequence past $N$ are in $U$, showing that the sequence converges to the same point topologically.
+\end{proof}
+\begin{definition}[Convergent Sequence]
+A sequence is \emph{convergent} if it has a limit.
+\end{definition}
+\begin{definition}[Bounded Set]
+A set $S \subseteq \mathbb{C}$ is \emph{bounded} if it is a subset of some disk centered around $0$.
+\end{definition}
+\begin{lemma}[Convergent Sequences are Bounded]
+If $\seq{a}$ is a convergent sequence then its range is a \hyperlink{Bounded Set}{bounded set.}
+\end{lemma}
+\begin{proof}
+Since $\seq{a}$ is convergent, we know it has a limit, which we'll call $a$. We can pick $\varepsilon = 1$ and find some $N$ such that all sequence members past $N$ are within $1$ unit of $a$. By the triangle inequality, this means they are in $\disk{0}{\modulus{a}+1}$. This disk includes all of the points after $N$, but not necessarily those before $N$. However, there are only finitely many sequence members before or at $N$, so we can take the maximum modulus of all of these points, which we'll call $R$. Therefore, all points are contained within $\disk{0}{\modulus{a}+R+2}$, so the sequence is bounded.
+\end{proof}
+\begin{theorem}[Uniqueness of Limits]
+If $\seq{a} \in S \subseteq \mathbb{C}$ has a limit of $a$, then it does not have any other limit.
+\end{theorem}
+\begin{proof}
+Since $a_n \to a$, we know that for every $\varepsilon > 0$, there exists some cutoff point after which all elements of the sequence are within $\varepsilon$ of $a$. Now assume for contradiction that there is another point $\tilde{a}$ with the same property. Since these points are not equal, the distance between them is a positive number. Let $\varepsilon_0 = \frac{1}{2}\modulus{a-\tilde{a}}$. Since the sequence converges to both points, there is a corresponding cuttoff $N_{a}$ for $a$ and a cutoff $N_{\tilde{a}}$ for $\tilde{a}$. Now consider the following point:
+\begin{equation*} p = a_{N_{a}+N_{\tilde{a}}+1} \end{equation*}
+Since $p$ is beyond the cutoff for $a$, $\modulus{p-a}<\frac{1}{2}\modulus{\tilde{a}-a}$. But since $p$ is beyond the cutoff for $\tilde{a}$, $\modulus{p-\tilde{a}} < \frac{1}{2}\modulus{\tilde{a}-a}$. Adding these inequalities together, we get $\modulus{a-p}+\modulus{p-\tilde{a}} < \modulus{a-\tilde{a}}$. This violates the triangle inequality, so $\tilde{a}$ cannot be different from $a$.
+\end{proof}
+\begin{theorem}[Limit Laws for Sequences]
+Suppose $\seq{a}$ and $\seq{b}$ are sequences in the complex plane with $\lim_{n\to\infty} a_n =a$ and $\lim_{n\to\infty} b_n = b$. Then we can conclude the following:
+\begin{enumerate}
+\item $$\lim_{n\to\infty} (a_n+b_n) = a+b$$
+\item $$\lim_{n\to\infty} (a_nb_n) = ab$$
+\item $$\lim_{n\to\infty} \frac{1}{a_n} = \frac{1}{a}$$ provided $a \neq 0$.
+\item $$\lim_{n\to\infty} \rpart{a_n} = \rpart{a}$$\newline $$\lim_{n\to\infty} \ipart{a_n} = \ipart{a}$$ 
+\item $$\lim_{n\to\infty} \modulus{a_n} = \modulus{a}$$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item We are given an $\varepsilon > 0$ and need to find the corresponding $N$. Since both sequences converge, let $N_a$ and $N_b$ be the cutoffs for each sequence corresponding to a distance of $\varepsilon/2$. Let $N = N_a + N_b + 1$. Now we can bound the distance from $a_N+b_N$ to $a+b$:
+\begin{align*}
+\modulus{(a+b)-(a_N+b_N)} &= \modulus{(a-a_N)+(b-b_N)}\\
+&\leq \modulus{a-a_N}+\modulus{b-b_N}\\
+&\leq \varepsilon/2 + \varepsilon/2\\
+&= \varepsilon
+\end{align*}
+Therefore, we can use this $N$ to force the sum of the sequence elements to be within $\varepsilon$ of the sum of the limits.
+\item Since both $a_n$ and $b_n$ converge to $a$ and $b$ respectively, we can find an $N$ such that all sequence members past $N$ in both sequences are within $\delta > 0$ of their limits. Knowing this, we'll want to estimate the distance between any two terms in the product sequence and the product of the limits whenever $n>N$:
+\begin{align*}
+\modulus{ab-a_nb_n} &= \modulus{ab-a_nb+a_nb-a_nb_n}\\
+&= \modulus{b(a-a_n)+a_n(b-b_n)}\\
+&\leq \modulus{b}\modulus{a-a_n} + \modulus{a_n}\modulus{b-b_n}\\
+&\leq \modulus{b}\delta + \modulus{a_n}\delta
+\end{align*}
+Since \hyperlink{Convergent Sequences are Bounded}{convergent sequences are bounded}, we can bound $\modulus{a_n}$ by some $M$:
+\begin{align*}
+&\leq \delta\left(\modulus{b}+M\right)
+\end{align*}
+Therefore, given any $\varepsilon > 0$, since we can force both sequences to be within $\frac{\varepsilon}{\modulus{b}+M}$ of their limits via some $N$, we can get the product $a_nb_n$ to be within $\varepsilon$ of $ab$.
+\item Since $a_n$ converges to $a$, we can find an $N$ such that all sequence members past $N$ are within $\delta > 0$ of $a$. In addition, since \hyperlink{Convergent Sequences are Bounded}{convergent sequences are bounded}, we can also find an $M$ such that $\modulus{a_n}\leq M$. We can now bound the difference between the reciprocal of the limit and the reciprocal of any sequence element past $N$:
+\begin{align*}
+\modulus{\frac{1}{a}-\frac{1}{a_n}} &= \modulus{\frac{a_n-a}{aa_n}}\\
+&= \frac{\modulus{a-a_n}}{\modulus{a}{\modulus{a_n}}}\\
+&\leq \frac{\delta}{M\modulus{a}}
+\end{align*}
+Therefore, given any $\varepsilon > 0$, finding an $N$ that forces $a_n$ to be within $M\modulus{a}\varepsilon$ of $a$ will force the reciprocal of $a_n$ to be within $\varepsilon$ of the reciprocal of $a$.
+\item If $\modulus{a-a_n} < \varepsilon$, then $\modulus{\rpart{a}-\rpart{a_n}} = \modulus{\rpart{a-a_n}} \leq \modulus{a-a_n} < \varepsilon$. The same logic shows the equivalent condition for the imaginary part.
+\item If $\modulus{a-a_n} < \varepsilon$, then $\modulus{\modulus{a}-\modulus{a_n}} \leq \modulus{a-a_n} < \varepsilon$.
+\end{enumerate}
+\end{proof}
+\begin{definition}[Subsequence]
+Suppose $\seq{a}$ is some sequence, and let $\seq{n}[k]\in \mathbb{N}$ be a sequence of naturals. If the sequence of naturals is \emph{increasing}, then the composition of the sequences $\seq{a}[n_k][k]$ is referred to as a \emph{subsequence} of $\seq{a}$.
+\end{definition}
+\begin{lemma}[Increasing Natural Sequences]
+If $\seq{n}[k] \in \mathbb{N}$ is an increasing sequence, then $n_k \geq k$ for all sequence members.
+\end{lemma}
+\begin{proof}
+We will prove this via induction. For the base case, since $n_0 \in \mathbb{N}$, then $n_0 \geq 0$. Now, assume that $n_k \geq k$. Since $n_{k+1} > n_k$, $n_{k+1} > k$. But since $n_{k+1}$ is a natural number, this means $n_{k+1} \geq k+1$. This completes the proof.
+\end{proof}
+\begin{theorem}[Convergent Subsequence Theorem]
+If $\seq{a} \to a$, then any subsequence $\seq{a}[n_k][k] \to a$.
+\end{theorem}
+\begin{proof}
+Since $\seq{a} \to a$, for any $\varepsilon > 0$ there exists a corresponding cuttoff $N$ which is valid for all sequence members past $N$. That is, if $k > N$, then $a_k$ is within $\varepsilon$ of the limit. However, we know that $n_k \geq k$, and therefore $n_N \geq N$. Thus, if $k > n_N$, then $k > N$. We therefore have a corresponding cutoff for the subsequence, namely $n_N$, after which all points are within $\varepsilon$ of the limit.
+\end{proof}
+\begin{theorem}[Sequences and Accumulation Points]
+\begin{enumerate}
+\item If $\seq{a} \in S$ and the sequence converges to $a$, then $a \in \overline{S}$.
+\item If $a \in \overline{S}$ then there is some $\seq{a} \in S$ which converges to $a$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item If $a$ is the topological limit of $\seq{a}$ then for every neighborhood of $a$ there exists some cuttoff $N$ such that all sequence members past $N$ are in the neighborhood. That is, for all $U \in \nbhd{a}$ the intersection $U \cap \{a_n\}$ is nonempty, and so is $U \cap S$. Therefore, $a$ is an accumulation point of $S$, and therefore is in $\overline{S}$.
+\item Consider the sequence of disks $D_n = \disk{a}{2^{-n}}$. For each natural number $n$, we pick an $a_n \in D_n$. This sequence converges to $a$ because for every $\varepsilon > 0$ we can find the corresponding $N$:
+\begin{align*}
+2^{-N} &\leq \varepsilon\\
+N &\geq -\log_2 (\varepsilon) 
+\end{align*}
+We can simply pick $N$ as some integer bigger than the right hand side thanks to the \hyperlink{Archimedean Property}{\emph{archimedean property of reals}}, which we prove in the next section.
+\end{enumerate}
+\end{proof}
+\subsubsection{Sequences and the Topology of $\mathbb{R}$ and $\mathbb{C}$}
+In this textbook, we will assume the defining property of the real numbers is the \emph{least upper bound property}, which states that any set of reals which is bounded from above has a least upper bound. Explicitly constructing the reals is beyond the scope of this book, but the interested reader can refer to any textbook on real analysis for more information.
+\begin{lemma}[Archimedean Property]
+Given any real number, there is some natural greater than it.
+\end{lemma}
+\begin{proof}
+Assume for contradiction that there exists a real number which has no natural upper bound. Then this real number is an upper bound on the naturals. By the least upper bound property, this means there exists a supremum of all natural numbers, which we'll call $\alpha$. Since $\alpha$ is the \emph{least} upper bound, $\alpha -1$ is not an upper bound, and therefore there exists a natural number $n > \alpha -1$. Rearranging, we get $\alpha < n+1$. But since the right hand side is a natural, we've found a natural larger than the least upper bound on all natural numbers, leading to a contradiction.
+\end{proof}
+Note: The previous proof was an example of a proof method which we call "continuous induction". It allows us to prove statements for a large class of subsets of the reals in a manner similar to induction on the natural numbers. It will show up in future proofs.
+\begin{theorem}[Density of Rationals in Reals]
+If $S \subseteq \mathbb{R}$ is open, then it contains at least one member of $\mathbb{Q}$.
+\end{theorem}
+\begin{proof}
+Choose $p \in S$. If $p \in \mathbb{Q}$, then we're done. If this is not the case, we'll need to do some more work. We'll assume for now that $p > 0$. If $p=0$, then $p$ is rational, and if $p < 0$, we can reflect the set across zero, find a rational point via the following method, and use the negative of that number as our rational. Since $S$ is open, there exists some $(p-\varepsilon, p+\varepsilon) \subseteq S$. Without loss of generality, we can assume $\varepsilon < p$, so that everything stays positive. We want to show that there exist integers $m, n$ such that $p-\varepsilon < \frac{m}{n} < p+\varepsilon$. We can define $n$ by the \hyperlink{Archimedean Property}{Archimedean Property} such that $n > \frac{1}{2\varepsilon}$. This will ensure that $\frac{1}{n} < 2\epsilon$. Again because of the \hyperlink{Archimedean Property}{Archimedean Property}, we can choose an $m$ such that $m-1 \leq n(p-\varepsilon) < m$. This number must exist, since the set of all integer upper bounds has a greatest lower bound which is an integer, and that integer minus one is not an upper bound.
+From that equation, we can see that $p-\varepsilon < \frac{m}{n}$. We can also show that $p + \varepsilon > \frac{m}{n}$, since $p+\varepsilon = (p-\varepsilon)+ 2\varepsilon > \frac{1}{n}+\left(\frac{m}{n}-\frac{1}{n}\right) = \frac{m}{n}$. Thus, $\frac{m}{n}$ is in the open interval, and therefore in the set $S$.
+\end{proof}
+\begin{definition}[Dense Subset]
+A set $S$ is called a \emph{dense subset} of a set $X$ if $S \subseteq X$ and $\overline{S} \cap X = X$. We write this as $S \stackrel{d}{\subseteq} X$.
+\end{definition}
+Our previous theorem showed that the rationals are dense in the reals because proof demonstrated that every open set, which is a neighborhood of any one of its points, contains a rational number. Thus, all of the points are limit points of the rationals, and are therefore included in the closure.
+\begin{theorem}[Density of Gaussian Rationals in Complex Plane]
+The \emph{Gaussian Rationals}, or complex numbers with rational coordinates, form a dense subset of the entire complex plane. (The Gaussian Rationals are often written $\mathbb{Q} [i]$)
+\end{theorem}
+\begin{proof}
+We'll prove this the same way we proved the rationals are dense in the reals: by showing every open set in the complex plane contains a Gaussian rational. Let $S$ be such an open set, and pick $p \in S$. If $p$ is a Gaussian rational, we are done. Otherwise, we know since $S$ is open there exists a $\disk{p}{r} \subseteq S$. The disk contains all points of the form $x+iy$ where $(x-\rpart{p})^2+(y-\ipart{p})^2 < r^2$. Because \hyperlink{Density of Rationals in Reals}{the rationals are dense in the reals}, we can pick a rational $y$ such that $\modulus{y-\ipart{p}} < r$. This means that $(y-\ipart{p})^2 < r^2$, and therefore $r^2-(y-\ipart{p})^2$ is positive. If we look back on our original equation, we can see that all we need to do is find a rational $x$ which satisfies $\modulus{x-\rpart{p}} < \sqrt{r^2-(y-\ipart{p})^2}$. We can do this since the RHS is positive and \hyperlink{Density of Rationals in Reals}{the rationals are dense in the reals}.
+\end{proof}
+\\\\One interesting note is that in both the real and complex case, we were able to find a dense subset that was \emph{countable}. Proving the countability of $\mathbb{Q} [i]$ is not difficult, and is essentially the same proof as showing that the rationals themselves are countable. Sets like the reals and complex numbers with countable, dense subsets  have some important properties, so topologists have decided to give them a name:
+\begin{definition}[Seperable Space]
+A topological space is called \emph{seperable} if it contains a countable, dense subset.
+\end{definition}
+While we won't use the notion of seperability much in this textbook, as we are not very interested in general topology, there is one important lemma that is true in all seperable spaces.
+\begin{lemma}[Disjoint Open Sets Lemma]
+Suppose $X$ is a seperable topological space, and let $\mathcal{F}$ be a family of open sets in $X$ which are \emph{pairwise disjoint}. Then $\mathcal{F}$ contains countably many subsets.
+\end{lemma}
+\begin{proof}
+Since $X$ is seperable, there is a countable, dense subset, which we'll call $Y$. Since $Y$ is dense in $X$, every open set in $X$ contains at least one member of $Y$. We can therefore define a mapping $g: \mathcal{F} \to Y$ by picking a point in $Y$ from every open set in $\mathcal{F}$: $g(U) \in U \cap Y$. Note that this mapping must be one-to-one, since if $g(U)=g(V)$ that must mean that the sets overlap, which is impossible because the open sets are pairwise disjoint. Since we have a one-to-one mapping from $\mathcal{F}$ to a countable set, this means that $\mathcal{F}$ itself is countable.
+\end{proof}
+\begin{theorem}[Nested Intervals Theorem]
+Suppose $\seq{I}$ is a sequence of \emph{closed intervals} which are \emph{downward nested}. That is, $I_n \supseteq I_{n+1}$. Then there exists some $s \in \mathbb{R}$ which is in every $I_n$.
+\end{theorem}
+\begin{proof}
+Let $I_n = [a_n,b_n]$. The nesting condition implies that the $a_n \leq a_{n+1}$, $b_{m+1} \leq b_m$, and $a_n \leq b_m$ for all $m$ and $n$. Let $A = {a_n}$ and $B = {b_n}$. Since $A$ is bounded from above, it has a supremum, which we'll call $s$. Each $b_n$ is an upper bound of $A$, but $s$ is the least upper bound, so $a_n \leq s \leq b_n$. Therefore, $s \in I_n$ for all $n$.
+\end{proof}
+\begin{corollary}[Collapsing Intervals Lemma]
+If the length of each interval (the distance between the endpoints) is a sequence converging to $0$, then there is a \emph{unique} point which is in every interval.
+\end{corollary}
+\begin{proof}
+We know by the \hyperlink{Nested Intervals Theorem}{original theorem} that there at least \emph{exists} some point $s$  which is in every interval. Now let $\tilde{s} \in \mathbb{R}$ be any other point. We will now show that if the intervals are not just nested, but \emph{collapsing}, $\tilde{s}$ can't be in every interval. Let $\epsilon = \modulus{s-\tilde{s}}$. Note that the maximum distance between any two points in $I_n$ is $d_n = \modulus{a_n-b_n}$. Therefore, since $s \in I_n$, $I_n \subseteq [s-d_n,s+d_n]$. However, $d_n$ can be made as small as we want, since the intervals are collapsing. There is, therefore some $N$ such that $d_N < \epsilon$. If this is the case, then $\tilde{s}$ is not in the larger interval $[s-d_N,s+d_N]$, and therefore isn't in $I_N$. Therefore, there's only one point which is in every interval.
+\end{proof}
+\begin{theorem}[Monotone Sequence Theorem]
+Suppose $\seq{a} \in \mathbb{R}$ is \emph{monotonically increasing}. That is, suppose $a_{n+1} \geq a_n$. If $\seq{a}$ is \emph{bounded}, then the sequence converges to the least upper bound of all of its elements.
+\end{theorem}
+\begin{proof}
+Since the sequence $\seq{a}$ is bounded, then by the least upper bound property it has a supremum, $a$. Since $a$ is the smallest such upper bound, for any $\varepsilon > 0$, $a-\varepsilon$ is not an upper bound of $\seq{a}$. Therefore, there is some $a_n$ such that $a-\varepsilon < a_n \leq a$. Since the sequence is monotonically increasing, this double inequality is true of any $a_k$ where $k \geq n$. Since $\varepsilon > 0$, we can rewrite this as $a-\varepsilon < a_k < a+\varepsilon$ for all $a_k$ where $k$ is sufficiently large. But we can write this inequality as $\modulus{a-a_k} < \varepsilon$, showing the sequence converges to $a$.
+\end{proof}
+\begin{theorem}[Squeeze Theorem for Sequences]
+If $\seq{a},\seq{b},\seq{c} \in \mathbb{R}$ and $a_n \leq b_n \leq c_n$ and $\seq{a}, \seq{c} \to L$ then $\seq{b} \to L$.
+\end{theorem}
+\begin{proof}
+Since both the left and right sequences converge to $L$, given any $\varepsilon > 0$, we can find a common cutoff such that both $a_n$ and $c_n$ are within $\varepsilon$ of the limit. This means that $L-\varepsilon < a_n$ and $c_n < L+\varepsilon$. But because of the inequality, this tells us that $L-\varepsilon < b_n < L+\varepsilon$, and therefore $\modulus{b_n - L} < \varepsilon$, completing the proof.
+\end{proof}
+\begin{corollary}
+If $\seq{a} \in \mathbb{R}$ and $\modulus{a_n} \to 0$ then $a_n \to 0$.
+\end{corollary}
+\begin{proof}
+Simply note that $-\modulus{a_n} \leq a_n \leq \modulus{a_n}$ and apply the squeeze theorem.
+\end{proof}
+\begin{theorem}[Bolzano-Weierstrass Theorem, Real-Valued Case]
+Suppose $\seq{a} \in \mathbb{R}$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
+\end{theorem}
+\begin{proof}
+We will prove this via the \hyperlink{Collapsing Intervals Lemma}{collapsing intervals lemma}. Since the sequence is bounded, we know there exists an $M$ such that $\modulus{a_n} \leq M$. We'll let $I_0 = [-M, M]$. Since $\seq{a} \in I_0$, the interval contains infinitely many terms in the sequence. We will want to construct our interval sequence in such a way that each interval contains infinitely many terms. Suppose $I_n = [l, r]$ does contain infinitely many terms. If the interval $[l, \frac{l+r}{2}]$ contains infinitely many terms, we'll let that be the $I_{n+1}$. Otherwise, the interval $[\frac{l+r}{2}, r]$ will contain infinitely many terms of the sequence, and we'll choose it to be our $I_{n+1}$. Clearly, $I_{n+1} \subseteq I_n$, so we do have a sequence of nested intervals. In addition, since each interval is half the length of the previous, the intervals are collapsing, which we know means there exists exactly one real number in all of them. We'll call this number $\tilde{a}$. Now we'll define a subsequence that converges to $\tilde{a}$.
+First, choose an arbitrary sequence member and call it $a_{n_0}$. To get $a_{n_k}$, we'll pick any sequence member $a_q$ in $I_k$ such that $q > n_{k-1}$. This way, the $n_k$ form an increasing sequence of naturals. We can always find such a sequence member because each interval contains infinitely many sequence members to choose from. Now since $a_{n_k}$ and $\tilde{a}$ are both in $I_k$. Since the length of the intervals keeps getting smaller, we can say $0 \leq \modulus{a_{n_k} - \tilde{a}} \leq \frac{M}{2^k}$. Since the length goes to zero, the distance between the subsequence terms and $\tilde{a}$ goes to zero, and therefore $a_{n_k}$ goes to $\tilde{a}$.
+\end{proof}
+The previous theorem can easily be generalized to the complex numbers:
+\begin{theorem}[Bolzano-Weierstrass Theorem]
+Suppose $\seq{a} \in \mathbb{C}$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
+\end{theorem}
+\begin{proof}
+Since $\seq{a}$ is bounded, then $\modulus{a_n} \leq M$ for some bound. This also means that $\modulus{\rpart{a_n}} \leq M$. We can apply the \hyperlink{Bolzano-Weierstrass Theorem, Real-Valued Case}{Bolzano-Weierstrass for reals} to this sequence and get a convergent subsequence of reals. If we use these indices on our original, complex-valued sequence, we obtain a second sequence, $\seq{b}$. Now we can use the same logic on the $b_n$ to find a subsequence $\seq{c}$ which has convergent \emph{imaginary} parts. Since the imaginary parts converge, and the real parts converge since they are a subsequence of the convergent real parts of $\seq{b}$, we have found a convergent subsequence of $\seq{a}$.
+\end{proof}
+\subsubsection{Cauchy Sequences and Completeness}
+\begin{definition}[Cauchy Sequence]
+A sequence $\seq{a}$ is called \emph{Cauchy} iff for every $\varepsilon > 0$ there exists some natural number $N$ such that $m, n > N \implies \modulus{a_m-a_n} < \varepsilon$.
+\end{definition}
+\begin{lemma}[Convergent Sequences are Cauchy]
+If $\seq{a}$ is convergent, then it is Cauchy.
+\end{lemma}
+\begin{proof}
+Since the sequence is convergent, for every $\varepsilon > 0$, there is a corresponding cuttoff such that all members past the cutoff are within $\varepsilon$ of the limit, $a$. Pick some $\delta > 0$ and pick any two sequence members beyond the cutoff. We can now calculate the distance betweeen them:
+\begin{align*}
+\modulus{a_n-a_m} &= \modulus{(a_n -a) - (a_m-a)}\\
+&\leq \modulus{a_n - a} + \modulus{a_m - a}\\
+&\leq 2\delta
+\end{align*}
+This is enough to show our sequence is Cauchy. Given any $\varepsilon > 0$, we pick the cutoff that gets sequence members within $\varepsilon/2$ of the limit, which will get them within $\varepsilon$ of each other.
+\end{proof}
+\begin{lemma}[Cauchy Sequences are Bounded]
+If $\seq{a}$ is Cauchy, then it is bounded.
+\end{lemma}
+\begin{proof}
+Since $\seq{a}$ is Cauchy, we can pick a positive $\varepsilon$ and get a cutoff such that $\modulus{a_n-a_m} < \varepsilon$. If we fix $a_n$, we get that the set of all sequence members past the cutoff is bounded. Since the set of all members before the cutoff is finite, and therefore also bounded, we get that the whole sequence is bounded.
+\end{proof}
+\begin{definition}[Completeness]
+A set $X$ with a metric defined on it is called \emph{complete} if every Cauchy sequence in the set converges to a point in the set.
+\end{definition}
+\begin{theorem}[Completeness of $\mathbb{C}$]
+The set of all complex numbers,  $\mathbb{C}$, is complete.
+\end{theorem}
+\begin{proof}
+Take any Cauchy sequence $\seq{a}$. Because \hyperlink{Cauchy Sequences are Bounded}{Cauchy sequences are bounded}, we can apply the \hyperlink{Bolzano-Weierstrass Theorem}{Bolzano-Weierstrass theorem} and find a convergent subsequence, $\seq{a}[n_k][k]$. This sequence converges to a complex number, $a$. Now we want to show that our original sequence converges to $a$ as well.
+Since our original sequence is Cauchy, there exists a cutoff after which $\modulus{a_n-a_m} < \varepsilon/2$ for any positive $\varepsilon$. Since the subsequence converges to $a$, we can find a cutoff after which $\modulus{a-a_{n_k}} < \varepsilon/2$. Now, consider the maximum of these two cutoffs, $N$. If we let $n> N$ and $n_k>N$, we can calculate the following: 
+\begin{align*}
+\modulus{a_n - a} &\leq \modulus{a_n-a_{n_k}} + \modulus{a_{n_k}-a}\\ &\leq \varepsilon/2 +\varepsilon/2\\ &= \varepsilon
+\end{align*}
+Thus, we can make the original sequence as close as we want to the limit of the subsequence by choosing a sufficiently large cutoff.
+\end{proof}
+\begin{theorem}[Closed Subsets of Complete Sets are Complete]
+If $X$ is complete, and $Y \subseteq X$ and $Y$ is closed, $Y$ is complete.
+\end{theorem}
+\begin{proof}
+Suppose $\seq{a} \in Y$ is a Cauchy sequence. Since $Y \subseteq X$, it is also a Cauchy sequence in $X$, and since $X$ is complete, it converges to $a \in X$. However, since $\seq{a}$ is a sequence in $Y$ and $Y$ is closed, the sequence must converge to a point in $Y$ if it converges at all. Therefore, $a \in Y$, showing that $Y$ is complete.
+\end{proof}
+\subsection{Connectedness and Compactness}
+\subsection{Limits of Functions, Continuity}
+\subsubsection{Continuous Images of Connected and Compact Sets}

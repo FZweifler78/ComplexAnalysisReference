@@ -1,0 +1,66 @@
+\section{THE COMPLEX NUMBER SYSTEM}
+\subsection{The Algebra of Complex Numbers}
+\begin{definition} [Complex Numbers]
+The \emph{complex numbers} are the set
+\begin{equation*}
+\mathbb{C} := \{\,[(a,b)] \mid a,b \in \mathbb{R}\,\}
+\end{equation*}
+where
+\begin{equation*}
+[(a,b)] :=
+\begin{cases}
+a & b = 0 \\
+(a,b) & b \neq 0
+\end{cases}
+\end{equation*}
+\end{definition}
+\begin{definition} [Real and Imaginary Parts of an element of $\mathbb{C}$]
+The real part of $z \in \mathbb{C}$ where $z=[(a,b)]$ is defined as:
+\begin{equation*}
+\rpart(z) := a.
+\end{equation*}
+Similarly, the imaginary part of $z \in \mathbb{C}$ is defined by $\ipart(z):=b$.
+\end{definition}
+\begin{definition} [Addition and Multiplication in $\mathbb{C}$]
+For $[(a,b)],[(c,d)]\in \mathbb{C}$, $[(a,b)]+[(c,d)]:=[(a+c,b+d)]$. Additionally, we will define multiplication as follows:
+\begin{equation*}
+[(a,b)]\cdot[(c,d)] := [(ac - bd, ad + bc)].
+\end{equation*}
+This may seem to be an arbitrary defintion of multiplication, but as we explore the properties of this definition its motivation will become apparant.
+\end{definition}
+\begin{theorem} [Properties of Addition and Multiplication $\mathbb{C}$]
+We can now verify a number of properties that will allow this rigorous bracketed point construction of $\mathbb{C}$ to be recgonized as equivalent to the familiar (non-rigorous) introduction of $\mathbb{C}$.
+Starting with properties of addition in $\mathbb{C}$, for $[(a,b)],[(c,d)] \in \mathbb{C}$ we have commutativity, associativity, and an identity.
+
+Starting with commutativity, we know $[(a,b)]+[(c,d)]=[(a+c,b+d)]=[(c+a,d+b)]$ by the commutativity of $\mathbb{R}$. $[(c,d)]+[(a,b)]=[(c+a,d+b)]$, and thus we have $[(a,b)]+[(c,d)]=[(c,d)]+[(a,b)]$.
+
+Next, associativity for $[(a,b)],[(c,d)],[(e,f)]\in \mathbb{C}$ is proven easily as well: We know $([(a,b)]+[(c,d)])+[(e,f)]=[((a+c)+e,(b+d)+f)]$. By the associativity of $\mathbb{R}$, we have $[(a+(c+e),b+(d+f))]=[(a,b)]+([(c,d)]+[(e,f)])$, and thus addition in $\mathbb{C}$ is associative.
+
+Finally we have an identity element, $[(0,0)]$. Note that $[(0,0)]$ is equal to the real number $0$. We quickly verify that it is indeed an indentity: For any $[(a,b)]\in \mathbb{C}$, $[(a,b)]+[(0,0)]=[(a+0,b+0)]=[(a,b)]$.
+
+Next, we verify the same properties for multiplication. (In these more or less straightforward proofs, it will become clear how notationally clumsy our bracketed point notation is, and we will abadon it soon after these proofs. Terrence Tao calls this type of idea mathematical scaffolding in his book Analysis I: necessary to sturdy and rigorous construction, but discarded after use.)
+
+Once again, starting with commutativity, we know $[(a,b)]\cdot[(c,d)]=[(ac-bd,ad+bc)]$ by definition. Similarly, $[(c,d)]\cdot[(a,b)]=[(ca-db,cb+da)]$ and that is equal to $[(ac-bd,ad+bc)]$ by commutativity of multiplication and addtion in $\mathbb{R}$.
+
+Next we prove associativity. We know $([(a,b)]\cdot[(c,d)])\cdot[(e,f)]=([(ac-bd,ad+bc)])\cdot[(e,f)]=[((ac-bd)e-(ad+bc)f,(ac-bd)f+(ad+bc)e]$. This is equal to $[(a,b)]\cdot([(c,d)]\cdot[(e,f)])$ by the standard properties of multiplication and addition in $\mathbb{R}$.
+
+As an intermediate step, we can also use this oppurtunity to prove distributivity of multiplication over addition. For $[(a,b)],[(c,d)],[(e,f)]\in \mathbb{C}$ we know
+\begin{equation*}
+[(a,b)]\cdot([(c,d)]+[(e,f)])=[(a,b)]\cdot[(c+e,d+f)]=[(ac+ae-bd-bf,ad+af+bc+be)]
+\end{equation*}
+Then, by the properties of addition and multiplication in $\mathbb{R}$ we knnow
+\begin{equation*}
+[(ac-bd,ad+bc)]+[(ae-bf,af+be)]=[(a,b)]\cdot[(c,d)]+[(a,b)]\cdot[(e,f)]
+\end{equation*}
+\end{theorem} 
+
+
+
+
+
+
+
+
+\subsection{The Geometry of Complex Numbers}
+\subsubsection{Möbius Transformations and the Riemann Sphere}
+

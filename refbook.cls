@@ -19,14 +19,15 @@
 \RequirePackage{graphicx,fancyhdr}
 \RequirePackage{xcolor}
 \RequirePackage{mdframed}
-\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[hidelinks, unicode=true]{hyperref}
 \RequirePackage{xkeyval}
+\RequirePackage{xparse}
 
 \setlength{\parindent}{0pt} % No paragraph indents
 \setlength{\parskip}{1em} % Paragraphs separated by one line
 \renewcommand{\headrulewidth}{0pt} % Removes line in header
 \geometry{legalpaper, portrait, margin=1in}
-\setlength{\headheight}{14.49998pt}
+\setlength{\headheight}{20pt}
 \setlength{\headsep}{0.2in}
 \newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022: Complex Analysis Reference Sheet}}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
@@ -145,17 +146,6 @@
 }
 {\end{boxsec}}
 
-\newenvironment{problem}[1][]{
-  \refstepcounter{probo}
-  \ifstrempty{#1}{
-    \begin{boxsec}{\textbf{Problem \theprobo}:}
-  }
-  {
-    \begin{boxsec}{\textbf{Problem #1}:}
-  }
-}
-{\end{boxsec}}
-
 \newcommand{\norm}[1]{\lVert #1 \rVert}
 \newcommand{\modulus}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\innerprod}[2]{\left<#1,#2\right>}
@@ -169,7 +159,7 @@
 \newcommand{\boundary}[1]{\operatorname{bd}({#1})}
 \newcommand{\interior}[1]{\operatorname{int}({#1})}
 \newcommand{\exterior}[1]{\operatorname{ext}({#1})}
-\newcommand{\seq}[1]{\left({#1}_n\right)^\infty_{n=0}}
+\NewDocumentCommand {\seq} {m O{n} O{#2}}{\left({#1}_{#2}\right)^\infty_{{#3}=0}}
 \newcommand{\rpart}[1]{\operatorname{Re}({#1})}
 \newcommand{\ipart}[1]{\operatorname{Im}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
