@@ -160,6 +160,7 @@
 \newcommand{\interior}[1]{\operatorname{int}({#1})}
 \newcommand{\exterior}[1]{\operatorname{ext}({#1})}
 \NewDocumentCommand {\seq} {m O{n} O{#2}}{\left({#1}_{#2}\right)^\infty_{{#3}=0}}
+\NewDocumentCommand {\fn} {m m m O{}}{{#1} \colon {#2} \xrightarrow{#4} {#3}}
 \newcommand{\rpart}[1]{\operatorname{Re}({#1})}
 \newcommand{\ipart}[1]{\operatorname{Im}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

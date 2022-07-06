@@ -109,7 +109,8 @@ Given any set $S$, its \emph{exterior} $\exterior{S}$ is defined as the interior
 \begin{definition}[Boundary of a Set]
 Given any set $S$, its \emph{boundary} $\boundary{S}$ consists of all points not in the interior of exterior of $S$.
 \end{definition}
-\subsection{Sequences in the Complex Plane, Limits of Sequences}
+\subsection{Sequences in the Complex Plane}
+The notion of a \emph{sequence} is a very useful one in topology, since not only are sequences useful in proofs of topological properties, but the properties of sequences in a topological space can tell us about the topological space itself. Here, we will go over the basic properties of sequences in the complex plane.
 \subsubsection{Basic Results on Sequences}
 \begin{definition}[Sequence]
 Given a set $S$, a \emph{sequence} in $S$ is a function $a : \mathbb{N} \longrightarrow S$. The sequence can be written as $\seq{a}$, and the $n$th member of the sequence is written $a_n$.
@@ -223,7 +224,7 @@ We can simply pick $N$ as some integer bigger than the right hand side thanks to
 \end{enumerate}
 \end{proof}
 \subsubsection{Sequences and the Topology of $\mathbb{R}$ and $\mathbb{C}$}
-In this textbook, we will assume the defining property of the real numbers is the \emph{least upper bound property}, which states that any set of reals which is bounded from above has a least upper bound. Explicitly constructing the reals is beyond the scope of this book, but the interested reader can refer to any textbook on real analysis for more information.
+Now that we know the basics of sequences, we will use sequences to prove important properties of the topologies of the real and complex number systems. Doing so will require us to be a bit more explicit about what we mean by a ``real number." In this textbook, we will assume the defining property of the real numbers is the \emph{least upper bound property}, which states that any set of reals which is bounded from above has a least upper bound. Explicitly constructing the reals is beyond the scope of this book, but the interested reader can refer to any textbook on real analysis for more information.
 \begin{lemma}[Archimedean Property]
 Given any real number, there is some natural greater than it.
 \end{lemma}
@@ -283,12 +284,6 @@ If $\seq{a},\seq{b},\seq{c} \in \mathbb{R}$ and $a_n \leq b_n \leq c_n$ and $\se
 \begin{proof}
 Since both the left and right sequences converge to $L$, given any $\varepsilon > 0$, we can find a common cutoff such that both $a_n$ and $c_n$ are within $\varepsilon$ of the limit. This means that $L-\varepsilon < a_n$ and $c_n < L+\varepsilon$. But because of the inequality, this tells us that $L-\varepsilon < b_n < L+\varepsilon$, and therefore $\modulus{b_n - L} < \varepsilon$, completing the proof.
 \end{proof}
-\begin{corollary}
-If $\seq{a} \in \mathbb{R}$ and $\modulus{a_n} \to 0$ then $a_n \to 0$.
-\end{corollary}
-\begin{proof}
-Simply note that $-\modulus{a_n} \leq a_n \leq \modulus{a_n}$ and apply the squeeze theorem.
-\end{proof}
 \begin{theorem}[Bolzano-Weierstrass Theorem, Real-Valued Case]
 Suppose $\seq{a} \in \mathbb{R}$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
 \end{theorem}
@@ -346,5 +341,93 @@ If $X$ is complete, and $Y \subseteq X$ and $Y$ is closed, $Y$ is complete.
 Suppose $\seq{a} \in Y$ is a Cauchy sequence. Since $Y \subseteq X$, it is also a Cauchy sequence in $X$, and since $X$ is complete, it converges to $a \in X$. However, since $\seq{a}$ is a sequence in $Y$ and $Y$ is closed, the sequence must converge to a point in $Y$ if it converges at all. Therefore, $a \in Y$, showing that $Y$ is complete.
 \end{proof}
 \subsection{Connectedness and Compactness}
-\subsection{Limits of Functions, Continuity}
+The notions of \emph{connectedness} and \emph{compactness} are somewhat subtle topological concepts, but they are extremely useful in proofs. Fortunately, they are much easier to understand in the real or complex numbers then they are in more pathological topological spaces. We'll start with connectedness, as it's the easier of the two to understand.
+\subsubsection{Connectedness}
+\begin{definition}[Connected Set]
+A set $X \subseteq \mathbb{C}$ is called \emph{connected} if there do not exist two sets $A$ and $B$ with the following properties:
+\begin{enumerate}
+\item $A$ and $B$ are open \emph{relative to} $X$.
+\item Neither $A$ nor $B$ are empty.
+\item $A \cap B = \emptyset$.
+\item $A \cup B = X$.
+\end{enumerate}
+In other words, $X$ is connected if it is not the union of two nonempty, disjoint, relatively open sets. We can think of connected sets as sets which ``come in one piece."
+\end{definition}
+\subsection{Functions and Their Limits}
+\subsection{Continuity}
+\subsubsection{Equivalent Formulations of Continuous Functions}
 \subsubsection{Continuous Images of Connected and Compact Sets}
+\subsection{The Theory of Paths}
+While writing this book, we came to realize that a surprisingly large amount of complex analysis is based on the topological and analytical properties of \emph{paths} in the complex plane. Indeed, much of algebraic topology, which we will examine closely in Chapter 7, is based on characterizing topological spaces based on what types of paths (and their close relatives, called \emph{patches}) the topological space admits. For this reason, we thought that the rigorous development of the theory of paths should be its own subsection.
+\begin{definition}[Path]
+Suppose $X$ is a topological space. Then a \emph{path} $\fn{\gamma}{[0,1]}{X}[C^0]$ is simply a continuous function from the unit interval into the topological space.
+\end{definition}
+\begin{definition}[Loop]
+A \emph{loop} $\gamma$ is simply a path that ends where it starts, i.e. $\gamma(0) = \gamma(1)$.
+\end{definition}
+\begin{definition}[Reversal of a Path]
+Suppose $\gamma$ is a path. The \emph{reversal} of $\gamma$, written $\gamma^\dashv$, is defined as $\gamma^\dashv (t) = \gamma (1-t)$.
+\end{definition}
+\begin{lemma}[Reversal of a Path is a Path]
+If $\gamma$ is a path, then so is $\gamma^\dashv$.
+\end{lemma}
+\begin{lemma}[Reversal of a Loop is a Loop]
+If $\gamma$ is a loop, then so is $\gamma^\dashv$.
+\end{lemma}
+\begin{definition}[Concatenation of Paths]
+Suppose $\gamma$ and $\delta$ are two paths with $\gamma(1)=\delta(0)$. Then we define the \emph{concatenation} of the two paths, $\gamma^\frown\delta$ is defined as follows:
+\begin{equation*}
+\gamma^\frown\delta(t) = 
+\begin{cases}
+\gamma(2t) & t \leq 1/2\\
+\delta(2t-1) & t \geq 1/2
+\end{cases}
+\end{equation*}
+\end{definition}
+\begin{lemma}[Concatenation of Paths is a Path]
+If $\gamma$ and $\delta$ are paths, then so is $\gamma^\frown\delta$.
+\end{lemma}
+\begin{lemma}[Concatenation of Loops is a Loop]
+If $\gamma$ and $\delta$ are loops, then so is $\gamma^\frown\delta$.
+\end{lemma}
+\begin{definition}[Uniform Rectilinear Motion]
+For any two points in the complex plane $z$ and $w$, there is a special path between them called the \emph{uniform rectilinear motion}. We define it as $\overline{z,w}(t)=(1-t)z+tw$.
+\end{definition}
+\begin{definition}[Path Connectedness]
+A set $X$ is called \emph{path connected} if for any two points in the set there is a path in the set that starts at one and ends at the other.
+\end{definition}
+\begin{theorem}[Path Connected Sets are Connected]
+If a set is path connected, then it is connected.
+\end{theorem}
+\begin{corollary}[The Complex Plane is Connected]
+The complex plane $\mathbb{C}$ is connected
+\end{corollary}
+\begin{corollary}
+The only subsets of the complex plane which are both open and closed (sometimes called \emph{clopen}) are the empty set and the complex plane itself.
+\end{corollary}
+\begin{proof}
+Suppose $X \subseteq \mathbb{C}$ is a clopen set. Since it is both open and closed, its complement $X^C$ is also both open and closed. We therefore have that $X$ and $X^C$ are open, their union is the whole complex plane, and their intersection is the empty set. But since the complex plane is connected, the only way this could happen is if one of the sets was the empty set. The complement of the empty set is the whole complex plane.
+These are the only clopen subsets of the complex plane.
+\end{proof}
+\begin{theorem}[Regions are Path Connected]
+Every region is a path connected set
+\end{theorem}
+\begin{definition}[Zig-Zag Path]
+A path in a set $X$ is called \emph{zig-zag} if it is a member of the set $\mathcal{Z}_X$ which we define as follows:
+\begin{enumerate}
+\item For all points in $X$, the constant path $f(t) = c \in X$ is in $\mathcal{Z}_X$.
+\item If the uniform rectilinear motion between two points in $X$ with the same real part is contained in $X$, then the uniform rectilinear motion is in $\mathcal{Z}_X$.
+\item If the uniform rectilinear motion between two points in $X$ with the same imaginary part is contained in $X$, then the uniform rectilinear motion is in $\mathcal{Z}_X$.
+\item Given any $\gamma, \delta \in \mathcal{Z}_X$ with $\gamma(1)=\delta(0)$, then the concatenation $\gamma^\frown\delta$ is in $\mathcal{Z}_X$.
+\item The set $\mathcal{Z}_X$ is the minimal such set of paths in $X$ satisfying the previous requirements.
+\end{enumerate}
+\end{definition}
+\begin{definition}[Zig-Zag Connectedness]
+A set $X$ is called \emph{zig-zag connected} if for any two points in the set there is a zig-zag path in the set that starts at one and ends at the other.
+\end{definition}
+\begin{theorem}[Zig-Zag Connected Sets are Connected]
+If a set is zig-zag connected, then it is connected.
+\end{theorem}
+\begin{theorem}[Regions are Zig-Zag Connected]
+Every region is a zig-zag connected set
+\end{theorem}
