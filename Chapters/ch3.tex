@@ -250,15 +250,15 @@ The \emph{Gaussian Rationals}, or complex numbers with rational coordinates, for
 We'll prove this the same way we proved the rationals are dense in the reals: by showing every open set in the complex plane contains a Gaussian rational. Let $S$ be such an open set, and pick $p \in S$. If $p$ is a Gaussian rational, we are done. Otherwise, we know since $S$ is open there exists a $\disk{p}{r} \subseteq S$. The disk contains all points of the form $x+iy$ where $(x-\rpart{p})^2+(y-\ipart{p})^2 < r^2$. Because \hyperlink{Density of Rationals in Reals}{the rationals are dense in the reals}, we can pick a rational $y$ such that $\modulus{y-\ipart{p}} < r$. This means that $(y-\ipart{p})^2 < r^2$, and therefore $r^2-(y-\ipart{p})^2$ is positive. If we look back on our original equation, we can see that all we need to do is find a rational $x$ which satisfies $\modulus{x-\rpart{p}} < \sqrt{r^2-(y-\ipart{p})^2}$. We can do this since the RHS is positive and \hyperlink{Density of Rationals in Reals}{the rationals are dense in the reals}.
 \end{proof}
 \\\\One interesting note is that in both the real and complex case, we were able to find a dense subset that was \emph{countable}. Proving the countability of $\mathbb{Q} [i]$ is not difficult, and is essentially the same proof as showing that the rationals themselves are countable. Sets like the reals and complex numbers with countable, dense subsets  have some important properties, so topologists have decided to give them a name:
-\begin{definition}[Seperable Space]
-A topological space is called \emph{seperable} if it contains a countable, dense subset.
+\begin{definition}[Separable Space]
+A topological space is called \emph{separable} if it contains a countable, dense subset.
 \end{definition}
-While we won't use the notion of seperability much in this textbook, as we are not very interested in general topology, there is one important lemma that is true in all seperable spaces.
+While we won't use the notion of separability much in this textbook, as we are not very interested in general topology, there is one important lemma that is true in all separable spaces.
 \begin{lemma}[Disjoint Open Sets Lemma]
-Suppose $X$ is a seperable topological space, and let $\mathcal{F}$ be a family of open sets in $X$ which are \emph{pairwise disjoint}. Then $\mathcal{F}$ contains countably many subsets.
+Suppose $X$ is a separable topological space, and let $\mathcal{F}$ be a family of open sets in $X$ which are \emph{pairwise disjoint}. Then $\mathcal{F}$ contains countably many subsets.
 \end{lemma}
 \begin{proof}
-Since $X$ is seperable, there is a countable, dense subset, which we'll call $Y$. Since $Y$ is dense in $X$, every open set in $X$ contains at least one member of $Y$. We can therefore define a mapping $g: \mathcal{F} \to Y$ by picking a point in $Y$ from every open set in $\mathcal{F}$: $g(U) \in U \cap Y$. Note that this mapping must be one-to-one, since if $g(U)=g(V)$ that must mean that the sets overlap, which is impossible because the open sets are pairwise disjoint. Since we have a one-to-one mapping from $\mathcal{F}$ to a countable set, this means that $\mathcal{F}$ itself is countable.
+Since $X$ is separable, there is a countable, dense subset, which we'll call $Y$. Since $Y$ is dense in $X$, every open set in $X$ contains at least one member of $Y$. We can therefore define a mapping $g: \mathcal{F} \to Y$ by picking a point in $Y$ from every open set in $\mathcal{F}$: $g(U) \in U \cap Y$. Note that this mapping must be one-to-one, since if $g(U)=g(V)$ that must mean that the sets overlap, which is impossible because the open sets are pairwise disjoint. Since we have a one-to-one mapping from $\mathcal{F}$ to a countable set, this means that $\mathcal{F}$ itself is countable.
 \end{proof}
 \begin{theorem}[Nested Intervals Theorem]
 Suppose $\seq{I}$ is a sequence of \emph{closed intervals} which are \emph{downward nested}. That is, $I_n \supseteq I_{n+1}$. Then there exists some $s \in \mathbb{R}$ which is in every $I_n$.
@@ -297,6 +297,14 @@ Suppose $\seq{a} \in \mathbb{C}$ is a bounded sequence. Then there exists a subs
 \end{theorem}
 \begin{proof}
 Since $\seq{a}$ is bounded, then $\modulus{a_n} \leq M$ for some bound. This also means that $\modulus{\rpart{a_n}} \leq M$. We can apply the \hyperlink{Bolzano-Weierstrass Theorem, Real-Valued Case}{Bolzano-Weierstrass for reals} to this sequence and get a convergent subsequence of reals. If we use these indices on our original, complex-valued sequence, we obtain a second sequence, $\seq{b}$. Now we can use the same logic on the $b_n$ to find a subsequence $\seq{c}$ which has convergent \emph{imaginary} parts. Since the imaginary parts converge, and the real parts converge since they are a subsequence of the convergent real parts of $\seq{b}$, we have found a convergent subsequence of $\seq{a}$.
+\end{proof}
+The proof of the previous theorems relied implictly on a small lemma, which we'll prove here in its most general form
+\begin{lemma}[Subsequences and Accumulation Points]
+If a sequence has an accumulation point which is not a member of the sequence then there is a subsequence converging to that accumulation point.
+\end{lemma}
+\begin{proof}
+Let $\seq{a} \in \mathbb{C}$ be some sequence, and let $\tilde{a}$ be an accumulation point which doesn't appear within the sequence. We'll define a sequence of disks $D_n = \disk{\tilde{a}}{2^{-n}}$. These form a nested sequence of disks: $D_0 \supseteq D_1 \supseteq D_2 \ldots$ Now we'll show that each disk contains infinitely many sequence members. Assume for the sake of contradiction that some $D_n$ contains only finitely many sequence members. Since none of these sequence members are equal to $\tilde{a}$, they are all some positve distance away from it. We can take the minimum distance, which we'll call $\varepsilon$, and look at $D_M$, where $M \geq \log_2 (\varepsilon)$. This disk has a radius less than or equal to $\varepsilon$, so it does not contain any sequence members. But this would contradict $\tilde{a}$ being an accumulation point.\\
+Now that we've established that each disk contains infinitely many elements, we can begin constructing a subsequence. Let $n_0$ be the first index where $a_{n_0} \in D_0$. Given $n_k$, we'll define $n_{k+1}$ as the first index greater than $n_k$ such that $a_{n_{k+1}} \in D_{k+1}$. We can pick such an element since $D_{k+1}$ has infinitely many sequence members, and requiring that $n_{k+1} > n_k$ only gets rid of finitely many sequence members. This gives us a subsequence $\seq{a}[n_k][k] \in \mathbb{C}$ such that $a_{n_k} \in D_k$. Therefore $\modulus{\tilde{a}-a_{n_k}} < \frac{1}{2^k}$. Since the right hand side can be made as small as we want, so can the left hand side. Therefore, the subsequence converges to $\tilde{a}$. 
 \end{proof}
 \subsubsection{Cauchy Sequences and Completeness}
 \begin{definition}[Cauchy Sequence]
@@ -351,16 +359,99 @@ A set $X \subseteq \mathbb{C}$ is called \emph{connected} if there do not exist 
 \item $A \cap B = \emptyset$.
 \item $A \cup B = X$.
 \end{enumerate}
-In other words, $X$ is connected if it is not the union of two nonempty, disjoint, relatively open sets. We can think of connected sets as sets which ``come in one piece."
+In other words, $X$ is connected if it is not the union of two nonempty, disjoint, relatively open sets. We'll often abbreviated this by saying that connected sets cannot be partitioned ``nontrivially" into relatively open sets. We can think of connected sets as sets which ``come in one piece."
 \end{definition}
+\begin{lemma}[Alternate Definitions for Connected Sets]
+Replacing ``relatively open" with ``relatively closed" in the definition of a connected set yields an equivalent definition. In addition, a set $U$ is connected iff there does not exist a subset of $U$ which is relatively \emph{clopen} (both closed and open) other than $U$ or the empty set.
+\end{lemma}
+\begin{proof}
+We'll quickly demonstrate that the relative complement of a relatively closed set is open: If $K$ is closed relative to $U$, then $K = U \cap \tilde{K}$ for some closed set $\tilde{K}$. Since $\tilde{K}$ is closed, $\tilde{K}^C$ is open. $U \setminus \tilde{K} = U \cap \tilde{K}^C$, which is the intersection of $\tilde{K}^C$, an open set, with $U$, and is therefore open relative to $U$. The same logic shows that the reverse is also true: the relative complement of a relatively closed set is relatively closed.\\
+To show that the two new definitions of connectedness are equivalent to our original definition, we'll instead show that they give the same notion of what it means for a set to be \emph{disconnected}, i.e. not connected. Suppose $V$ is disconnected via our original definition. Then it can be nontrivially decomposed into disjoint relatively open sets: $V = A \cup B$. Since $B$ is open relative to $V$, $V \setminus B$ is closed relative to $B$. But since $A$ and $B$ are disjoint and their union is exactly $V$, $V \setminus B = A$. Thus, we've found a nontrivial relatively clopen set. Likewise, if we have a nontrival relatively clopen set, its complement will be relatively open, and we've found a nontrivial decomposition into relatively open sets. The same reasoning shows that a nontrivial decomposition into relatively closed sets is equivalent to the exsitence of a nontrivial relatively clopen set. Thus, all definitions agree on what constitutes a disconnected set, so they must agree on what doesn't constitute a disconnected set, i.e. what constitutes a connected set.
+\end{proof}
+\begin{definition}[Region]
+A set $X \subseteq \mathbb{C}$ is called a \emph{region} if it is nonempty, connected, and open. This is written $\region{U}$.
+\end{definition}
+\begin{theorem}[Fundamental Theorem of Regions]
+Suppose we have an equivalence relation $\sim$ between points in a region $\region{U}$. Suppose this equivalence relation also has the property that if $\disk{a}{\epsilon} \subseteq U$ then for all $z \in \disk{a}{\epsilon}, z\sim a$. Then for any two points $p,q \in U, p\sim q$.
+\end{theorem}
+\begin{proof}
+Since $U$ is a region, it is nonempty. We can therefore pick some $p \in U$. We'll now partition the region into two subsets as follows: let $A$ be the subset of $U$ consisting of all points equivalent to $p$, and let $B = U \setminus A$. Clearly these sets are disjoint, and their union is $U$. Now we will prove that both $A$ and $B$ are open.
+If $A$ is empty, then by definition it is open. If it is not empty, we can pick some point $a \in A$. Now because $U$ is open, there exists a $\disk{a}{\epsilon} \subseteq U$. Now pick any $z$ in that disk. We know that since $a$ is in $A$, $a \sim p$. However, we know by assumption that if there is a disk in $U$, all points in the disk are equivalent to the center of the disk. That is, $z \sim a$, and by transitivity, $z \sim p$. Therefore, all points in the disk are equivalent to $p$, and are therefore in $A$. Since for any $a \in A$, we now know that there exists a disk centered at $a$ in $A$, $A$ is a neighborhood of all of its points and therefore is open.
+We will proceed similarly with B. If $B$ is empty, then by definition it is open. If it is not empty, we can pick some point $b \in B$. Now because $U$ is open, there exists a $\disk{b}{\epsilon} \subseteq U$. Now pick any $z$ in that disk. We know that since $b$ is in $B$, $b \not\sim p$. However, we know by assumption that if there is a disk in $U$, all points in the disk are equivalent to the center of the disk. If any point in the disk were equivalent to $p$, by transitivity that would force the center of the disk ot be equivalent to $p$, which contradicts our assumption that the center of the disk is in $B$. That is, $z \sim b$, and by transitivity, $z \not\sim p$. Therefore, all points in the disk are \emph{not} equivalent to $p$, and are therefore in $B$. Since for any $b \in B$, we now know that there exists a disk centered at $b$ in $B$, $B$ is a neighborhood of all of its points and therefore is open.\\
+We've found a decomposition of $U$ into disjoint open sets. These sets are also open relative to $U$, since they are subsets of $U$ and therefore equal to their own intersections with $U$. By the definition of connectedness, the only way this could happen is if one of the sets is empty. We know that $A$ is nonempty because $p \sim p$, so $B$ must be the empty one. But this means that $A=U$, so any point in $U$ is equivalent to $p$. But if $a,b \in U$ are both equivalent to $p$, then by transitivity $a \sim b$.
+\end{proof}
+\begin{definition}[Connected Component]
+A connected subset $C \subseteq X$ is called an \emph{connected component} of $X$ if there does not exist another connected subset of $X$ such that $C$ is a proper subset of that connected subset.
+\end{definition}
+\begin{theorem}[Connected Components Theorem]
+Every set has a unique decomposition into connected components.
+\end{theorem}
+\begin{proof}
+Let $X$ be any set, and pick some $a \in X$. Define $C_X(a)$ as the union of all connected subsets of $X$ which contain the point $a$. We will shortly prove that for any point, this union is a connected set. If this is the case, we can easily show that this set is a connected component, and that two connected components are either disjoint or identical. Firstly, suppose there was some connected subset of $X$ such that $C_X(a)$ was a proper subset of that connected subset. If it was, then this connected subset would contain $a$, and therefore be in the union of all connected subsets containing $a$. This means that $C_X(a)$ couldn't possibly be a proper subset of any larger connected subset, and it therefore must be a component. Now we'll show that the distinct components are disjoint. Suppose there exists a $c$ which is in $C_X(a) \ cap C_X(b)$. Since $C_X(a)$ is a connected subset of $X$ containing $c$, $C_X(a) \subseteq C_X(c)$. This means that $a$ is in $C_X(c)$, and by the same logic $C_X(c) \subseteq C_X(a)$, and therefore $C_X(c)=C_X(a)$. The same reasoning shows that $C_X(c) = C_X(b)$, and therefore $C_X(a) = C_X(b)$. Thus, two components which are not disjoint turn out to be identical.\\
+For the previous logic to hold, we need to show that the $C_X$ sets are actually connected. Suppose there exists an $a \in X$ such that $C_X(a)$ is disconnected. Then there exist relatively open nonempty sets $A, B$ whose union is $C_X(a)$ and whose intersection is $\emptyset$. Without loss of generality, let $a \in A$. Since $B$ is nonempty, there exists a $b \in B$. Since $b \in C_X(a)$ and $C_X(a)$ is the union of all connected subsets of $X$ containing $A$, there exists a connected subset of $X$ called $X_0$ such that $a, b \in X_0$. However, we know that $X_0 = (X_0 \cap A) \cup (X_0 \cap B)$ since $X_0$ is a subset of $C_X(a)$. Since $A$ and $B$ are open relative to $C_X(a)$ and $X_0 \subseteq C_X(a)$, the sets $X_0 \cap A$ and $X_0 \cap B$ are relatively open. They are also disjoint since $A$ and $B$ are disjoint. Since $a \in X_0 \cap A$ and $b \in X_0 \cap B$, these sets are nonempty. This contradicts the connectedness of $X_0$. Therefore, $C_X(a)$ has to be connected.
+\end{proof}
+\subsubsection{Compactness and Sequential Compactness}
+There are two separate, but deeply connected notions of what it means for a set to be \emph{compact}: compactness and sequential compactness. Both of these are generalizations of the notion of a closed and bounded set. One of the most important facts about the topology of $\mathbb{R}^n$ and $\mathbb{C}^n$ is that these notions are all equivalent, which is formalized in the famous \emph{Heine-Borel Theorem}. We'll start with sequential compactness, as it's easier to understand.
+\begin{definition}[Sequential Compactness]
+A set $X$ is called \emph{sequentially compact} if for every $\seq{a} \in X$ there exists a subsequence $\seq{a}[n_k][k] \in X$ which converges to a point in $X$.
+\end{definition}
+\begin{theorem}[Sequential Compactness Theorem]
+A set $X \subseteq \mathbb{C}$ is sequentially compact iff it is closed and bounded.
+\end{theorem}
+\begin{proof}
+First, we'll show that sequentially compact sets are closed and bounded. If $X$ is not closed, then it's missing at least one limit point. We can simply pick a sequence in $X$ that converges to this limit point, and we've found a sequence that does not have a subsequence which converges to a point in $X$. Similarly, suppose $X$ was unbounded. We can then pick a sequence such that $\modulus{a_n} > n$. We can see this sequence is not Cauchy: $\modulus{a_{n+1}-a_n} \geq \modulus{a_{n+1}}-\modulus{a_n} > 1$. Since \hyperlink{Convergent Sequences are Cauchy}{every convergent sequence must be Cauchy}, this sequence does not converge.\\
+Now for the converse. Suppose $X$ is closed and bounded, and let $\seq{a} \in X$ be an arbitrary sequence. Since the set $X$ is bounded, so is the sequence, so by \hyperlink{Bolzano-Weierstrass Theorem}{Bolzano-Weierstrass}, there exists a convergent subsequence. But since $X$ is closed, any sequence in $X$ that converges must converge to a point in $X$. Therefore the subsequence converges to a point in $X$, and the set is therefore sequentially compact.
+\end{proof}
+\begin{definition}[Open Cover]
+If $X$ is some set, an \emph{open cover} of $X$ is a collection of open sets relative to $X$ whose union is a superset of $X$.
+\end{definition}
+\begin{lemma}[Alternate Definition for Open Covers]
+If $X$ is covered by (in the union of) a collection of open sets, then we can intersect each open set with $X$ to get a collection of open sets relative to $X$ whose union is $X$, i.e. an open cover by our original definition.
+\end{lemma}
+\begin{definition}[Subcover]
+If $C$ is an open cover of $X$, then a \emph{subcover} of $C$ is some subset $F \subseteq C$ which is still an open cover of $X$.
+\end{definition}
+\begin{definition}[Compactness]
+A set $X$ is called compact if for every open cover of $X$ there exists a subcover which contains \emph{finitely many sets}.
+\end{definition}
+\begin{lemma}[Closed Subsets of Compact Sets]
+If $S \subseteq K$ where $S$ is closed and $K$ is compact, then $S$ is also compact.
+\end{lemma}
+\begin{proof}
+Let $\mathcal{G}$ be an open cover of $S$. The open cover is made up of sets which are open relative to $S$, and are therefore the intersection of some open set with $S$. If we take any one of these open sets and instead intersect them with $K$, we'll get an open set relative to $K$ which contains the original open set relative to $S$. We can now construct an open cover of $K$, $\tilde{\mathcal{G}}$, which contains all of these new relative open sets as well as $K \setminus S$. This last set is open relative to $K$ because it can be written as $K \cap S^C$, and $S$ is closed, meaning $S^C$ is open. We know this covers $K$ since the original open cover modified so that the sets are open relative to $K$ instead of $S$ contains $S$ in its union, and we just add on another set which adds in any points we may have missed.\\
+Now, since $K$ is compact, we can pick a finite subcover of $\tilde{\mathcal{G}}$. Since the union of all the sets in this subcover is $K$, the union contains $S$ as well. Since no point in $S$ is in $K\setminus S$, we still would have $S$ in the union of all sets in this finite subcover except for $K \setminus S$. Finally, since all of these sets are open relative to $K$, we can intersect them with $S$ to get a finite subcover of $S$. Therefore, $S$ is compact.
+\end{proof}
+\begin{theorem}[Heine-Borel Theorem]
+A set $X \subseteq \mathbb{C}$ is compact iff it is closed and bounded.
+\end{theorem}
+\begin{proof}
+First, we'll prove that compactness implies that the set is closed and bounded. By the \hyperlink{Sequential Compactness Theorem}{sequential compactness theorem}, we know that a set is closed and bounded iff it is sequentially compact. Thus, we can alternatively show that every compact set is sequentially compact. Assume for the sake of contradiction that there exists a $K \subseteq \mathbb{C}$ which is compact but not sequentially compact. If it is not sequentially compact, there exists a $\seq{a} \in K$ with no convergent subsequence. Pick any $z \in K$. Note that $z$ cannot be an accumulation point of the sequence, since if it were we could find a subsequence converging to $z$. Therefore, there exists a $\varepsilon_z$ such that $\disk{z}{\varepsilon_z}$ contains no points from the sequence except possibly $z$ itself. Now consider the collection of all of these disks for all $z \in K$. This is an open cover of $K$. Since each disk contains at most one sequence element, every finite subcollection of this open cover will contain only finitely many sequence elements. Therefore, this open cover cannot have a finite subcover, since any finite subcollection of our open cover doesn't contain all of the $a_n$, instead containing only finitely many of them. This is a contradiction, so every compact set must be sequentially comapct.\\
+Now we'll show that closed and bounded sets are sequentially compact. By a \hyperlink{Closed Subsets of Compact Sets}{previous lemma}, we know that any closed subset of a compact set is compact. Suppose $S$ is a closed and bounded set. Since it is bounded, it can be put in a disk centered at zero. This disk can then be put inside a \emph{closed tile}, which is a set consisting of all points whose real parts are in some closed interval and whose imaginary parts are in some other closed interval. We'll call this tile $T_0$. If we can show that every closed tile is compact, we'll show that every closed and bounded set is compact. Assume for contradiction that $T_0$ is not compact. This means that some open cover of $T_0$ does not have a finite subcover. Bisect the tile both horizontally and vertically to get four subtiles. Our open cover of these four tiles cannot have a finite subcover for each of them, since that would mean we'd have a finite subcover for the whole tile. Let $T_1$ be any of the tiles that doesn't have a finite subcover. Now we continue this process creating a sequence of collapsing tiles $T_n \supset T_{n+1}$ with each tile not having a finite subcover. By the \hyperlink{Collapsing Intervals Lemma}{collapsing intervals lemma} applied to both the real and imaginary parts, there is exactly one complex number in every subtile. Call this point $\tilde{z}$. Now since $\tilde{z} \in T_0$, there must be an open set $U$ that is a member of the subcover and which contains $\tilde{z}$. Since $U$ is open, there is some $\disk{\tilde{z}}{\varepsilon} \subseteq U$. Since the boxes can be made arbitrarily small, eventually some $T_k$ will be completely inside this disk, which means it will be inside of $U$. But we said that $T_k$ had to be covered by infinitely many sets in the open cover, and yet we've found a single set in the open cover $U$ which will cover $T_k$. This is a contradiction, so the open cover must have a finite subcover. This means that every tile is compact, and therefore every closed and bounded set is compact.
+\end{proof}
+\begin{definition}[Distance Between Sets]
+If $A, B \subseteq \mathbb{C}$ are two sets, the \emph{distance} between them is simply the infimum of the distances between $a \in A$ and $b \in B$.
+\end{definition}
+\begin{theorem}[Distance Between Compact and Closed Sets]
+Suppose $A$ is a compact subset of $\mathbb{C}$ and $B$ is a closed subset of $\mathbb{C}$. If $A \cap B = \emptyset$, then the distance between the two sets is nonzero.
+\end{theorem}
+\begin{proof}
+Suppose that we have a compact and closed set such that the distance between them is zero. Since the distance between two sets is the infimum of the distance between points in one set and points in the other set, we can always find a $A \in A$ and a $b \in B$ such that $\modulus{a-b} < \varepsilon$ for any $\varepsilon > 0$. If this were not the case, we'd have found a positive upper bound on the distances between pairs of points in the sets, and therefore the distance between the sets would be nonzero. Given this, we can pick sequences $\seq{a} \in a$ and $\seq{b} \in B$ such that $\modulus{a_n - b_n} < \frac{1}{2^n}$. By the \hyperlink{Squeeze Theorem}{squeeze theorem}, $\lim_{n\to\infty}\modulus{a_n -b_n} = 0$. Since $\seq{a}$ is a sequence in a compact set, by \hyperlink{Heine-Borel Theorem}{Heine-Borel} there exists a subsequence $\seq{a}[n_k][k]$ which converges to $a \in A$. We have:
+\begin{align*}
+\lim_{k\to\infty}\modulus{a-b_{n_k}} &\leq \lim_{k\to\infty}(\modulus{a-a_{n_k}} + \modulus{a_{n_k} - b_{n_k}})\\
+&= \lim_{k\to\infty}\modulus{a-a_{n_k}} + \lim_{k\to\infty}\modulus{a_{n_k}-b_{n_k}}\\
+&= 0
+\end{align*}
+Therefore, $a$ is an accumulation point of $B$, and since $B$ is closed, $a\in B$. Thus, the two sets aren't disjoint. If they were, the distance between them couldn't be zero.
+\end{proof}
 \subsection{Functions and Their Limits}
 \subsection{Continuity}
 \subsubsection{Equivalent Formulations of Continuous Functions}
 \subsubsection{Continuous Images of Connected and Compact Sets}
 \subsection{The Theory of Paths}
 While writing this book, we came to realize that a surprisingly large amount of complex analysis is based on the topological and analytical properties of \emph{paths} in the complex plane. Indeed, much of algebraic topology, which we will examine closely in Chapter 7, is based on characterizing topological spaces based on what types of paths (and their close relatives, called \emph{patches}) the topological space admits. For this reason, we thought that the rigorous development of the theory of paths should be its own subsection.
+\subsubsection{Topological Results on Paths}
 \begin{definition}[Path]
-Suppose $X$ is a topological space. Then a \emph{path} $\fn{\gamma}{[0,1]}{X}[C^0]$ is simply a continuous function from the unit interval into the topological space.
+Suppose $X$ is a topological space. Then a \emph{path} $\fn{\gamma}{[0,1]}{X}[C^0]$ is simply a continuous function from the unit interval into the topological space. The set of all paths in a set $X$ is denoted $\mathcal{P}_X$.
 \end{definition}
 \begin{definition}[Loop]
 A \emph{loop} $\gamma$ is simply a path that ends where it starts, i.e. $\gamma(0) = \gamma(1)$.
@@ -387,11 +478,14 @@ Suppose $\gamma$ and $\delta$ are two paths with $\gamma(1)=\delta(0)$. Then we 
 \begin{lemma}[Concatenation of Paths is a Path]
 If $\gamma$ and $\delta$ are paths, then so is $\gamma^\frown\delta$.
 \end{lemma}
+\begin{lemma}[Reversal of a Concatenation]
+If $\gamma^\frown\delta$ is a valid concatenation, then $(\gamma^\frown\delta)^\dashv = (\delta^\dashv)^\frown(\gamma^\dashv)$.
+\end{lemma}
 \begin{lemma}[Concatenation of Loops is a Loop]
 If $\gamma$ and $\delta$ are loops, then so is $\gamma^\frown\delta$.
 \end{lemma}
 \begin{definition}[Uniform Rectilinear Motion]
-For any two points in the complex plane $z$ and $w$, there is a special path between them called the \emph{uniform rectilinear motion}. We define it as $\overline{z,w}(t)=(1-t)z+tw$.
+For any two points in the complex plane $z$ and $w$, there is a special path between them called the \emph{uniform rectilinear motion}. We define it as $\overrightarrow{z,w}(t)=(1-t)z+tw$.
 \end{definition}
 \begin{definition}[Path Connectedness]
 A set $X$ is called \emph{path connected} if for any two points in the set there is a path in the set that starts at one and ends at the other.
@@ -410,18 +504,23 @@ Suppose $X \subseteq \mathbb{C}$ is a clopen set. Since it is both open and clos
 These are the only clopen subsets of the complex plane.
 \end{proof}
 \begin{theorem}[Regions are Path Connected]
-Every region is a path connected set
+Every region is a path connected set.
 \end{theorem}
 \begin{definition}[Zig-Zag Path]
 A path in a set $X$ is called \emph{zig-zag} if it is a member of the set $\mathcal{Z}_X$ which we define as follows:
 \begin{enumerate}
-\item For all points in $X$, the constant path $f(t) = c \in X$ is in $\mathcal{Z}_X$.
 \item If the uniform rectilinear motion between two points in $X$ with the same real part is contained in $X$, then the uniform rectilinear motion is in $\mathcal{Z}_X$.
 \item If the uniform rectilinear motion between two points in $X$ with the same imaginary part is contained in $X$, then the uniform rectilinear motion is in $\mathcal{Z}_X$.
 \item Given any $\gamma, \delta \in \mathcal{Z}_X$ with $\gamma(1)=\delta(0)$, then the concatenation $\gamma^\frown\delta$ is in $\mathcal{Z}_X$.
-\item The set $\mathcal{Z}_X$ is the minimal such set of paths in $X$ satisfying the previous requirements.
+\item The set $\mathcal{Z}_X$ is the minimal such set of paths in $X$ satisfying the previous requirements. That is, given any subset of $\mathcal{P}_X$ which contains all possible vertical and horizontal uniform rectilinear motions and is closed under concatenation, $\mathcal{Z}_X$ will be a subset of this set.
 \end{enumerate}
 \end{definition}
+\begin{theorem}[Reversal of a Zig-Zag]
+If $\gamma \in \mathcal{Z}_X$, then $\gamma^\vdash \in \mathcal{Z}_X$.
+\end{theorem}
+\begin{proof}
+First, we'll define the set $R \subseteq \mathcal{Z}_X (\subseteq \mathcal{P}_X)$ as the set of all zig-zag paths whose reversal is also a zig-zag path. We need to show that this set is identical to the set of all zig-zag paths. First, consider any purely horizontal rectilinear motion $\overrightarrow{z,w}$ which is a zig-zag path in $X$. This is defined as $\overrightarrow{z,w}(t) = (1-t)z + tw$. By definition, its reversal is $\overrightarrow{z,w}^\vdash (t) = tz + (1-t)w = \overrightarrow{w,z} (t)$. Since the image of the reversal of a path is the same as the original image of the path, this path doesn't leave the set $X$. Since it is still purely horizontal, it is a zig-zag path in $X$ and therefore a member of our set $R$. The same logic shows that every purely vertical uniform rectilinear motion is in $R$ as well. Now we'll take $\gamma, \delta \in R$ where $\gamma(1) = \delta(0)$ and look at the concatenation, $\gamma^\frown\delta$. By \hyperlink{Reversal of a Concatenation}{a previous result}, the reversal of this path is the concatenation $(\delta^\vdash)^\frown(\gamma^\vdash)$. Since the two original paths were in $R$, their reversals are also zig-zag paths, and since the concatenation of two zig-zag paths is a zig-zag path, this one is as well. Therefore, the concatenation of two elements of $R$ is also an element in $R$. By our minimality condition for zig-zag paths, this means $R\supseteq\mathcal{Z}_X$. But since we originally constructed $R$ to be a subset of $\mathcal{Z}_X$, we have $R=\mathcal{Z}_X$, and therefore the reversal of \emph{any} zig-zag path is a zig-zag path in the same set.
+\end{proof}
 \begin{definition}[Zig-Zag Connectedness]
 A set $X$ is called \emph{zig-zag connected} if for any two points in the set there is a zig-zag path in the set that starts at one and ends at the other.
 \end{definition}
@@ -429,5 +528,14 @@ A set $X$ is called \emph{zig-zag connected} if for any two points in the set th
 If a set is zig-zag connected, then it is connected.
 \end{theorem}
 \begin{theorem}[Regions are Zig-Zag Connected]
-Every region is a zig-zag connected set
+Every region is a zig-zag connected set.
 \end{theorem}
+\subsubsection{Winding Numbers of Paths}
+The concept of the \emph{index} or \emph{winding number} of a path with respect to a point is an essential part of many of the results we will prove in later sections. The idea of a winding number is often first analyzed in the context of only those \emph{loops} satisfying certain smoothness conditions which we will examine in our section on contours. However, the notion of a winding number is not unique to loops, nor does it require the path to be smooth. Therefore, we thought that we should introduce the idea in the most general context, and prove the typical results on the winding numbers of smooth loops as theorems in later sections.
+\begin{definition}[Winding Number]
+Suppose $\gamma$ is a path in $\mathbb{C}$, and suppose $z \in \mathbb{C}$ and $z \not\in \range{\gamma}$. If there exists a path in the \emph{reals} $\Theta$ which satisfies the following equation:
+\begin{equation*}
+\frac{\gamma(t)-z}{\modulus{\gamma(t)-z}} = e^{i\Theta(t)}
+\end{equation*}
+then we can define the \emph{winding number} of $\gamma$ with respect to $z$ as $\ind{z}{\gamma} = \frac{\Theta(1)-\Theta(0)}{2\pi}$. The real-valued path $\Theta$ is called an \emph{continuous angle function} for the path $\gamma$.
+\end{definition}

@@ -29,7 +29,7 @@
 \geometry{legalpaper, portrait, margin=1in}
 \setlength{\headheight}{20pt}
 \setlength{\headsep}{0.2in}
-\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022: Complex Analysis Reference Sheet}}
+\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022: Complex Analysis of a Single Variable}}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,14 +38,14 @@
      \begin{center}
           \vspace*{5cm}
 
-          \Huge{Complex Analysis Reference Book}
+          \Huge{Complex Analysis of a Single Variable}
 
 
           \vspace{3 cm}
           \Large{Stuyvesant Class of 2022}
 
           \vspace{0.25cm}
-          \large{Nathaniel J. Strout, Joshua L. Yagupsky, Francis Zweifler}
+          \large{Joshua L. Yagupsky, Nathaniel J. Strout, Francis Zweifler}
 
           \vspace{3 cm}
           \Large{Created February 15th, 2022}
@@ -156,9 +156,13 @@
 \newcommand{\pdisk}[2]{\operatorname{D^*_{#2}} ({#1})}
 \newcommand{\rnbhd}[2]{\operatorname{\mathcal{N}_{#2}}({#1})}
 \newcommand{\rpnbhd}[2]{\operatorname{\mathcal{N^*}_{#2}}({#1})}
+\newcommand{\ind}[2]{\operatorname{ind}({#1},{#2})}
 \newcommand{\boundary}[1]{\operatorname{bd}({#1})}
 \newcommand{\interior}[1]{\operatorname{int}({#1})}
 \newcommand{\exterior}[1]{\operatorname{ext}({#1})}
+\newcommand{\domain}[1]{\operatorname{dom}({#1})}
+\newcommand{\range}[1]{\operatorname{ran}({#1})}
+\newcommand{\region}[1]{{#1}\overset{\text{reg}}{\subseteq}\mathbb{C}}
 \NewDocumentCommand {\seq} {m O{n} O{#2}}{\left({#1}_{#2}\right)^\infty_{{#3}=0}}
 \NewDocumentCommand {\fn} {m m m O{}}{{#1} \colon {#2} \xrightarrow{#4} {#3}}
 \newcommand{\rpart}[1]{\operatorname{Re}({#1})}
