@@ -29,7 +29,7 @@
 \geometry{legalpaper, portrait, margin=1in}
 \setlength{\headheight}{20pt}
 \setlength{\headsep}{0.2in}
-\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{Stuyvesant Class of 2022: Complex Analysis of a Single Variable}}
+\newcommand{\pagesetup}{\pagestyle{fancy}\fancyhf{}\rhead{\thepage}\lhead{\hyperlink{toc}{Stuyvesant Class of 2022: Complex Analysis of a Single Variable}}}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,7 +57,7 @@
   \end{titlepage}
 
   \pagestyle{empty}
-  \tableofcontents
+  \hypertarget{toc}{\tableofcontents}
   \cleardoublepage
 
   \pagesetup
@@ -164,7 +164,7 @@
 \newcommand{\range}[1]{\operatorname{ran}({#1})}
 \newcommand{\region}[1]{{#1}\overset{\text{reg}}{\subseteq}\mathbb{C}}
 \NewDocumentCommand {\seq} {m O{n} O{#2}}{\left({#1}_{#2}\right)^\infty_{{#3}=0}}
-\NewDocumentCommand {\fn} {m m m O{}}{{#1} \colon {#2} \xrightarrow{#4} {#3}}
+\NewDocumentCommand {\fn} {m m m O{}}{\ifstrempty{#4}{{#1} \colon {#2} \longrightarrow {#3}}{{#1} \colon {#2} \xlongrightarrow{#4} {#3}}}
 \newcommand{\rpart}[1]{\operatorname{Re}({#1})}
 \newcommand{\ipart}[1]{\operatorname{Im}({#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
