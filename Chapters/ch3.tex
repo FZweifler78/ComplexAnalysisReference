@@ -2,18 +2,18 @@
 \subsection{Neighborhoods, Open and Closed Sets}
 \begin{definition}[Open Disk]
 The \emph{open disk} of radius $r$ around the point $p$ is defined as follows:
-\begin{equation*}\disk{r}{p} = \{z \in \mathbb{C} \mid \modulus{z-p} < r\}\end{equation*}
+\begin{equation*}\disk{r}{p} = \{z \in \C \mid \modulus{z-p} < r\}\end{equation*}
 \end{definition}
 \begin{definition}[Neighborhood of a Point]
-A set $S \subseteq \mathbb{C}$ is called a \emph{neighborhood} of a point $p$ if there exists some $r > 0$ such that $\disk{p}{r} \subseteq S$.
+A set $S \subseteq \C$ is called a \emph{neighborhood} of a point $p$ if there exists some $r > 0$ such that $\disk{p}{r} \subseteq S$.
 We write this as $S \in \nbhd{p}$, where $\nbhd{p}$ denotes the \emph{neighborhood-system} of $p$.
 \end{definition}
 \begin{definition}[Punctured Disk]
 The \emph{punctured disk} of radius $r$ around the point $p$ is defined as follows:
-\begin{equation*}\pdisk{r}{p} = \{z \in \mathbb{C} \mid 0<\modulus{z-p} < r\}\end{equation*}
+\begin{equation*}\pdisk{r}{p} = \{z \in \C \mid 0<\modulus{z-p} < r\}\end{equation*}
 \end{definition}
 \begin{definition}[Punctured Neighborhood of a Point]
-A set $S \subseteq \mathbb{C}$ is called a \emph{punctured neighborhood} of a point $p$ if there exists some $r > 0$ such that $\pdisk{p}{r} \subseteq S$ and $p \notin S$.
+A set $S \subseteq \C$ is called a \emph{punctured neighborhood} of a point $p$ if there exists some $r > 0$ such that $\pdisk{p}{r} \subseteq S$ and $p \notin S$.
 We write this as $S \in \pnbhd{p}$, where $\pnbhd{p}$ denotes the \emph{punctured neighborhood-system} of $p$.
 \end{definition}
 \begin{definition}[Open Set]
@@ -41,7 +41,7 @@ If a point $p$ is in the intersection of a collection of sets $C$, it is in ever
 Since there are only finitely many sets in the collection, we can let $\varepsilon = \min r_S$, which will be greater than $0$. But since $\varepsilon \leq r_S$ for any $S$, $\disk{p}{\varepsilon}$ will be a subset of every $S$, and therefore will be in the intersection. The intersection is therefore a neighborhood of all of its points, making it an open set. 
 \end{proof}
 \begin{definition}[Closed Set]
-A set $S \subseteq \mathbb{C}$ is called \emph{closed} iff its complement $S^C$ is open.
+A set $S \subseteq \C$ is called \emph{closed} iff its complement $S^C$ is open.
 \end{definition}
 \begin{lemma}[Properties of Closed Sets]
 The intersection of any collection of closed sets is closed, and the union of any \emph{finite} collection of closed sets is closed.
@@ -59,14 +59,14 @@ Given any set $X$, a \emph{topology} on $X$ $\tau_X$ is a collection of subsets 
 A neighborhood of a point $p$ in any general topology is a set which contains an open set containing $p$.
 \end{definition}
 \begin{definition}[Relative Topology]
-Given any type of set in the topology of $\mathbb{C}$ (open set, closed set, open disk, punctured disk, etc.) and some fixed subset $X \subseteq \mathbb{C}$, we can define a type of set \emph{relative} to $X$ as the intersection of that type of set with $X$. For instance, if $N \in \nbhd{p}$ and $p \in X$, then the intersection $N \cap X$ is called a \emph{relative neighborhood} of $p$, denoted as $N \cap X \in \rnbhd{p}{X}$. The collection of all open sets relative to $X$ forms a topology, called the \emph{relative topology} of $X$.
+Given any type of set in the topology of $\C$ (open set, closed set, open disk, punctured disk, etc.) and some fixed subset $X \subseteq \C$, we can define a type of set \emph{relative} to $X$ as the intersection of that type of set with $X$. For instance, if $N \in \nbhd{p}$ and $p \in X$, then the intersection $N \cap X$ is called a \emph{relative neighborhood} of $p$, denoted as $N \cap X \in \rnbhd{p}{X}$. The collection of all open sets relative to $X$ forms a topology, called the \emph{relative topology} of $X$.
 \end{definition}
 \subsection{Accumulation Points and the Closure of a Set}
 \begin{definition}[Accumulation Point]
 A point $p$ is called an \emph{accumulation point} or \emph{limit point} of a set $S$ iff there does not exist a neigborhood $N \in \nbhd{p}$ such that $N \cap S = \emptyset$.
 \end{definition}
 \begin{lemma}[Accumulation Points of a Closed Set]
-$K \subseteq \mathbb{C}$ is closed iff it contains all of its accumulation points.
+$K \subseteq \C$ is closed iff it contains all of its accumulation points.
 \end{lemma}
 \begin{proof}
 First, we will prove that a closed set contains all of its limit points.
@@ -119,10 +119,10 @@ Given a set $S$, a \emph{sequence} in $S$ is a function $a : \mathbb{N} \longrig
 If $\seq{a} \in S \subseteq X$ and $X$ has a topology, we say the sequence has a \emph{limit} of $a \in X$ iff for every $U \in \nbhd{a}$ there exists some natural number $N$ such that $n>N \implies a_n \in U$.
 \end{definition}
 \begin{definition}[Metric Limit of a Sequence]
-If $\seq{a} \in S \subseteq \mathbb{C}$ we say the sequence has a \emph{limit} of $a \in \mathbb{C}$ iff for every $\varepsilon > 0$ there exists some natural number $N$ such that $n > N \implies \modulus{a_n-a} < \varepsilon$.
+If $\seq{a} \in S \subseteq \C$ we say the sequence has a \emph{limit} of $a \in \C$ iff for every $\varepsilon > 0$ there exists some natural number $N$ such that $n > N \implies \modulus{a_n-a} < \varepsilon$.
 \end{definition}
 \begin{theorem}[Equivalence of Limit Types for Sequences]
-If $\seq{a} \in S \subseteq \mathbb{C}$ then the sequence has a topological limit of $a \in \mathbb{C}$ iff it has a metric limit of $a \in \mathbb{C}$.
+If $\seq{a} \in S \subseteq \C$ then the sequence has a topological limit of $a \in \C$ iff it has a metric limit of $a \in \C$.
 \end{theorem}
 \begin{proof}
 First we will show that a topological limit implies a metric limit. We are given some $\varepsilon > 0$, and we need to find the corresponding $N$ such that all values in the sequence past $N$ are within $\varepsilon$ of $a$. This is equivalent to saying all of the values in the sequence past $N$ are in $\disk{a}{\varepsilon}$. This set is a neighborhood of $a$. Since we know the sequence converges topologically, we can find such an $N$.\\
@@ -132,7 +132,7 @@ Now we will show the converse: a metric limit implies a topological limit. We ar
 A sequence is \emph{convergent} if it has a limit.
 \end{definition}
 \begin{definition}[Bounded Set]
-A set $S \subseteq \mathbb{C}$ is \emph{bounded} if it is a subset of some disk centered around $0$.
+A set $S \subseteq \C$ is \emph{bounded} if it is a subset of some disk centered around $0$.
 \end{definition}
 \begin{lemma}[Convergent Sequences are Bounded]
 If $\seq{a}$ is a convergent sequence then its range is a \hyperlink{Bounded Set}{bounded set.}
@@ -141,7 +141,7 @@ If $\seq{a}$ is a convergent sequence then its range is a \hyperlink{Bounded Set
 Since $\seq{a}$ is convergent, we know it has a limit, which we'll call $a$. We can pick $\varepsilon = 1$ and find some $N$ such that all sequence members past $N$ are within $1$ unit of $a$. By the triangle inequality, this means they are in $\disk{0}{\modulus{a}+1}$. This disk includes all of the points after $N$, but not necessarily those before $N$. However, there are only finitely many sequence members before or at $N$, so we can take the maximum modulus of all of these points, which we'll call $R$. Therefore, all points are contained within $\disk{0}{\modulus{a}+R+2}$, so the sequence is bounded.
 \end{proof}
 \begin{theorem}[Uniqueness of Limits for Sequences]
-If $\seq{a} \in S \subseteq \mathbb{C}$ has a limit of $a$, then it does not have any other limit.
+If $\seq{a} \in S \subseteq \C$ has a limit of $a$, then it does not have any other limit.
 \end{theorem}
 \begin{proof}
 Since $a_n \to a$, we know that for every $\varepsilon > 0$, there exists some cutoff point after which all elements of the sequence are within $\varepsilon$ of $a$. Now assume for contradiction that there is another point $\tilde{a}$ with the same property. Since these points are not equal, the distance between them is a positive number. Let $\varepsilon_0 = \frac{1}{2}\modulus{a-\tilde{a}}$. Since the sequence converges to both points, there is a corresponding cuttoff $N_{a}$ for $a$ and a cutoff $N_{\tilde{a}}$ for $\tilde{a}$. Now consider the following point:
@@ -153,7 +153,7 @@ Suppose $\seq{a}$ and $\seq{b}$ are sequences in the complex plane with $\lim_{n
 \begin{enumerate}
 \item $$\lim_{n\to\infty} (a_n+b_n) = a+b$$
 \item $$\lim_{n\to\infty} (a_nb_n) = ab$$
-\item $$\lim_{n\to\infty} \frac{1}{a_n} = \frac{1}{a}$$ provided $a \neq 0$.
+\item $$\lim_{n\to\infty} \frac{1}{a_n} = \frac{1}{a}$$ provided $a \neq 0$ and $a_n \neq 0$ for all $n$.
 \item $$\lim_{n\to\infty} \rpart{a_n} = \rpart{a}$$\newline $$\lim_{n\to\infty} \ipart{a_n} = \ipart{a}$$ 
 \item $$\lim_{n\to\infty} \modulus{a_n} = \modulus{a}$$
 \end{enumerate}
@@ -180,13 +180,20 @@ Since \hyperlink{Convergent Sequences are Bounded}{convergent sequences are boun
 &\leq \delta\left(\modulus{b}+M\right)
 \end{align*}
 Therefore, given any $\varepsilon > 0$, since we can force both sequences to be within $\frac{\varepsilon}{\modulus{b}+M}$ of their limits via some $N$, we can get the product $a_nb_n$ to be within $\varepsilon$ of $ab$.
-\item Since $a_n$ converges to $a$, we can find an $N$ such that all sequence members past $N$ are within $\delta > 0$ of $a$. In addition, since \hyperlink{Convergent Sequences are Bounded}{convergent sequences are bounded}, we can also find an $M$ such that $\modulus{a_n}\leq M$. We can now bound the difference between the reciprocal of the limit and the reciprocal of any sequence element past $N$:
+\item Since $a_n$ converges to $a$, we can find an $N$ such that all sequence members past $N$ are within $\delta > 0$ of $a$. In addition, since none of the $a_n$ are zero and neither is the limit, there exists an $m$ such that $0 < m \leq \modulus{a_n}$. We know this because after some $N$, $\modulus{a_n-a}<\modulus{a}/2$. We can now calculate the following:
+\begin{align*}
+\modulus{a_n} &= \modulus{a-(a-a_n)}\\
+&\geq \modulus{a} - \modulus{a-a_n}\\
+&\geq \modulus{a}/2
+\end{align*}
+We can then pick $m = \operatorname{min}{\left\{\modulus{a_0}, \modulus{a_1}... \modulus{a_N}, \modulus{a}/2\right\}}$. We can now bound the difference between the reciprocal of the limit and the reciprocal of any sequence element past $N$:
 \begin{align*}
 \modulus{\frac{1}{a}-\frac{1}{a_n}} &= \modulus{\frac{a_n-a}{aa_n}}\\
 &= \frac{\modulus{a-a_n}}{\modulus{a}{\modulus{a_n}}}\\
-&\leq \frac{\delta}{M\modulus{a}}
+&\leq \frac{\delta}{\modulus{a_n}\modulus{a}}\\
+&\leq \frac{\delta}{m\modulus{a}}
 \end{align*}
-Therefore, given any $\varepsilon > 0$, finding an $N$ that forces $a_n$ to be within $M\modulus{a}\varepsilon$ of $a$ will force the reciprocal of $a_n$ to be within $\varepsilon$ of the reciprocal of $a$.
+Therefore, given any $\varepsilon > 0$, finding an $N$ that forces $a_n$ to be within $m\modulus{a}\varepsilon$ of $a$ will force the reciprocal of $a_n$ to be within $\varepsilon$ of the reciprocal of $a$.
 \item If $\modulus{a-a_n} < \varepsilon$, then $\modulus{\rpart{a}-\rpart{a_n}} = \modulus{\rpart{a-a_n}} \leq \modulus{a-a_n} < \varepsilon$. The same logic shows the equivalent condition for the imaginary part.
 \item If $\modulus{a-a_n} < \varepsilon$, then $\modulus{\modulus{a}-\modulus{a_n}} \leq \modulus{a-a_n} < \varepsilon$.
 \end{enumerate}
@@ -223,7 +230,7 @@ N &\geq -\log_2 (\varepsilon)
 We can simply pick $N$ as some integer bigger than the right hand side thanks to the \hyperlink{Archimedean Property}{\emph{archimedean property of reals}}, which we prove in the next section.
 \end{enumerate}
 \end{proof}
-\subsubsection{Sequences and the Topology of $\mathbb{R}$ and $\mathbb{C}$}
+\subsubsection{Sequences and the Topology of $\R$ and $\C$}
 Now that we know the basics of sequences, we will use sequences to prove important properties of the topologies of the real and complex number systems. Doing so will require us to be a bit more explicit about what we mean by a ``real number." In this textbook, we will assume the defining property of the real numbers is the \emph{least upper bound property}, which states that any set of reals which is bounded from above has a least upper bound. Explicitly constructing the reals is beyond the scope of this book, but the interested reader can refer to any textbook on real analysis for more information.
 \begin{lemma}[Archimedean Property]
 Given any real number, there is some natural greater than it.
@@ -233,7 +240,7 @@ Assume for contradiction that there exists a real number which has no natural up
 \end{proof}
 Note: The previous proof was an example of a proof method which we call "continuous induction". It allows us to prove statements for a large class of subsets of the reals in a manner similar to induction on the natural numbers. It will show up in future proofs.
 \begin{theorem}[Density of Rationals in Reals]
-If $S \subseteq \mathbb{R}$ is open, then it contains at least one member of $\mathbb{Q}$.
+If $S \subseteq \R$ is open, then it contains at least one member of $\mathbb{Q}$.
 \end{theorem}
 \begin{proof}
 Choose $p \in S$. If $p \in \mathbb{Q}$, then we're done. If this is not the case, we'll need to do some more work. We'll assume for now that $p > 0$. If $p=0$, then $p$ is rational, and if $p < 0$, we can reflect the set across zero, find a rational point via the following method, and use the negative of that number as our rational. Since $S$ is open, there exists some $(p-\varepsilon, p+\varepsilon) \subseteq S$. Without loss of generality, we can assume $\varepsilon < p$, so that everything stays positive. We want to show that there exist integers $m, n$ such that $p-\varepsilon < \frac{m}{n} < p+\varepsilon$. We can define $n$ by the \hyperlink{Archimedean Property}{Archimedean Property} such that $n > \frac{1}{2\varepsilon}$. This will ensure that $\frac{1}{n} < 2\epsilon$. Again because of the \hyperlink{Archimedean Property}{Archimedean Property}, we can choose an $m$ such that $m-1 \leq n(p-\varepsilon) < m$. This number must exist, since the set of all integer upper bounds has a greatest lower bound which is an integer, and that integer minus one is not an upper bound.
@@ -261,7 +268,7 @@ Suppose $X$ is a separable topological space, and let $\mathcal{F}$ be a family 
 Since $X$ is separable, there is a countable, dense subset, which we'll call $Y$. Since $Y$ is dense in $X$, every open set in $X$ contains at least one member of $Y$. We can therefore define a mapping $g: \mathcal{F} \to Y$ by picking a point in $Y$ from every open set in $\mathcal{F}$: $g(U) \in U \cap Y$. Note that this mapping must be one-to-one, since if $g(U)=g(V)$ that must mean that the sets overlap, which is impossible because the open sets are pairwise disjoint. Since we have a one-to-one mapping from $\mathcal{F}$ to a countable set, this means that $\mathcal{F}$ itself is countable.
 \end{proof}
 \begin{theorem}[Nested Intervals Theorem]
-Suppose $\seq{I}$ is a sequence of \emph{closed intervals} which are \emph{downward nested}. That is, $I_n \supseteq I_{n+1}$. Then there exists some $s \in \mathbb{R}$ which is in every $I_n$.
+Suppose $\seq{I}$ is a sequence of \emph{closed intervals} which are \emph{downward nested}. That is, $I_n \supseteq I_{n+1}$. Then there exists some $s \in \R$ which is in every $I_n$.
 \end{theorem}
 \begin{proof}
 Let $I_n = [a_n,b_n]$. The nesting condition implies that the $a_n \leq a_{n+1}$, $b_{m+1} \leq b_m$, and $a_n \leq b_m$ for all $m$ and $n$. Let $A = {a_n}$ and $B = {b_n}$. Since $A$ is bounded from above, it has a supremum, which we'll call $s$. Each $b_n$ is an upper bound of $A$, but $s$ is the least upper bound, so $a_n \leq s \leq b_n$. Therefore, $s \in I_n$ for all $n$.
@@ -270,22 +277,22 @@ Let $I_n = [a_n,b_n]$. The nesting condition implies that the $a_n \leq a_{n+1}$
 If the length of each interval (the distance between the endpoints) is a sequence converging to $0$, then there is a \emph{unique} point which is in every interval.
 \end{corollary}
 \begin{proof}
-We know by the \hyperlink{Nested Intervals Theorem}{original theorem} that there at least \emph{exists} some point $s$  which is in every interval. Now let $\tilde{s} \in \mathbb{R}$ be any other point. We will now show that if the intervals are not just nested, but \emph{collapsing}, $\tilde{s}$ can't be in every interval. Let $\epsilon = \modulus{s-\tilde{s}}$. Note that the maximum distance between any two points in $I_n$ is $d_n = \modulus{a_n-b_n}$. Therefore, since $s \in I_n$, $I_n \subseteq [s-d_n,s+d_n]$. However, $d_n$ can be made as small as we want, since the intervals are collapsing. There is, therefore some $N$ such that $d_N < \epsilon$. If this is the case, then $\tilde{s}$ is not in the larger interval $[s-d_N,s+d_N]$, and therefore isn't in $I_N$. Therefore, there's only one point which is in every interval.
+We know by the \hyperlink{Nested Intervals Theorem}{original theorem} that there at least \emph{exists} some point $s$  which is in every interval. Now let $\tilde{s} \in \R$ be any other point. We will now show that if the intervals are not just nested, but \emph{collapsing}, $\tilde{s}$ can't be in every interval. Let $\epsilon = \modulus{s-\tilde{s}}$. Note that the maximum distance between any two points in $I_n$ is $d_n = \modulus{a_n-b_n}$. Therefore, since $s \in I_n$, $I_n \subseteq [s-d_n,s+d_n]$. However, $d_n$ can be made as small as we want, since the intervals are collapsing. There is, therefore some $N$ such that $d_N < \epsilon$. If this is the case, then $\tilde{s}$ is not in the larger interval $[s-d_N,s+d_N]$, and therefore isn't in $I_N$. Therefore, there's only one point which is in every interval.
 \end{proof}
 \begin{theorem}[Monotone Sequence Theorem]
-Suppose $\seq{a} \in \mathbb{R}$ is \emph{monotonically increasing}. That is, suppose $a_{n+1} \geq a_n$. If $\seq{a}$ is \emph{bounded}, then the sequence converges to the least upper bound of all of its elements.
+Suppose $\seq{a} \in \R$ is \emph{monotonically increasing}. That is, suppose $a_{n+1} \geq a_n$. If $\seq{a}$ is \emph{bounded}, then the sequence converges to the least upper bound of all of its elements.
 \end{theorem}
 \begin{proof}
 Since the sequence $\seq{a}$ is bounded, then by the least upper bound property it has a supremum, $a$. Since $a$ is the smallest such upper bound, for any $\varepsilon > 0$, $a-\varepsilon$ is not an upper bound of $\seq{a}$. Therefore, there is some $a_n$ such that $a-\varepsilon < a_n \leq a$. Since the sequence is monotonically increasing, this double inequality is true of any $a_k$ where $k \geq n$. Since $\varepsilon > 0$, we can rewrite this as $a-\varepsilon < a_k < a+\varepsilon$ for all $a_k$ where $k$ is sufficiently large. But we can write this inequality as $\modulus{a-a_k} < \varepsilon$, showing the sequence converges to $a$.
 \end{proof}
 \begin{theorem}[Squeeze Theorem for Sequences]
-If $\seq{a},\seq{b},\seq{c} \in \mathbb{R}$ and $a_n \leq b_n \leq c_n$ and $\seq{a}, \seq{c} \to L$ then $\seq{b} \to L$.
+If $\seq{a},\seq{b},\seq{c} \in \R$ and $a_n \leq b_n \leq c_n$ and $\seq{a}, \seq{c} \to L$ then $\seq{b} \to L$.
 \end{theorem}
 \begin{proof}
 Since both the left and right sequences converge to $L$, given any $\varepsilon > 0$, we can find a common cutoff such that both $a_n$ and $c_n$ are within $\varepsilon$ of the limit. This means that $L-\varepsilon < a_n$ and $c_n < L+\varepsilon$. But because of the inequality, this tells us that $L-\varepsilon < b_n < L+\varepsilon$, and therefore $\modulus{b_n - L} < \varepsilon$, completing the proof.
 \end{proof}
 \begin{theorem}[Bolzano-Weierstrass Theorem, Real-Valued Case]
-Suppose $\seq{a} \in \mathbb{R}$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
+Suppose $\seq{a} \in \R$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
 \end{theorem}
 \begin{proof}
 We will prove this via the \hyperlink{Collapsing Intervals Lemma}{collapsing intervals lemma}. Since the sequence is bounded, we know there exists an $M$ such that $\modulus{a_n} \leq M$. We'll let $I_0 = [-M, M]$. Since $\seq{a} \in I_0$, the interval contains infinitely many terms in the sequence. We will want to construct our interval sequence in such a way that each interval contains infinitely many terms. Suppose $I_n = [l, r]$ does contain infinitely many terms. If the interval $[l, \frac{l+r}{2}]$ contains infinitely many terms, we'll let that be the $I_{n+1}$. Otherwise, the interval $[\frac{l+r}{2}, r]$ will contain infinitely many terms of the sequence, and we'll choose it to be our $I_{n+1}$. Clearly, $I_{n+1} \subseteq I_n$, so we do have a sequence of nested intervals. In addition, since each interval is half the length of the previous, the intervals are collapsing, which we know means there exists exactly one real number in all of them. We'll call this number $\tilde{a}$. Now we'll define a subsequence that converges to $\tilde{a}$.
@@ -293,7 +300,7 @@ First, choose an arbitrary sequence member and call it $a_{n_0}$. To get $a_{n_k
 \end{proof}
 The previous theorem can easily be generalized to the complex numbers:
 \begin{theorem}[Bolzano-Weierstrass Theorem]
-Suppose $\seq{a} \in \mathbb{C}$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
+Suppose $\seq{a} \in \C$ is a bounded sequence. Then there exists a subsequence $\seq{a}[n_k][k]$ which is convergent. 
 \end{theorem}
 \begin{proof}
 Since $\seq{a}$ is bounded, then $\modulus{a_n} \leq M$ for some bound. This also means that $\modulus{\rpart{a_n}} \leq M$. We can apply the \hyperlink{Bolzano-Weierstrass Theorem, Real-Valued Case}{Bolzano-Weierstrass for reals} to this sequence and get a convergent subsequence of reals. If we use these indices on our original, complex-valued sequence, we obtain a second sequence, $\seq{b}$. Now we can use the same logic on the $b_n$ to find a subsequence $\seq{c}$ which has convergent \emph{imaginary} parts. Since the imaginary parts converge, and the real parts converge since they are a subsequence of the convergent real parts of $\seq{b}$, we have found a convergent subsequence of $\seq{a}$.
@@ -303,8 +310,8 @@ The proof of the previous theorems relied implictly on a small lemma, which we'l
 If a sequence has an accumulation point which is not a member of the sequence then there is a subsequence converging to that accumulation point.
 \end{lemma}
 \begin{proof}
-Let $\seq{a} \in \mathbb{C}$ be some sequence, and let $\tilde{a}$ be an accumulation point which doesn't appear within the sequence. We'll define a sequence of disks $D_n = \disk{\tilde{a}}{2^{-n}}$. These form a nested sequence of disks: $D_0 \supseteq D_1 \supseteq D_2 \ldots$ Now we'll show that each disk contains infinitely many sequence members. Assume for the sake of contradiction that some $D_n$ contains only finitely many sequence members. Since none of these sequence members are equal to $\tilde{a}$, they are all some positve distance away from it. We can take the minimum distance, which we'll call $\varepsilon$, and look at $D_M$, where $M \geq \log_2 (\varepsilon)$. This disk has a radius less than or equal to $\varepsilon$, so it does not contain any sequence members. But this would contradict $\tilde{a}$ being an accumulation point.\\
-Now that we've established that each disk contains infinitely many elements, we can begin constructing a subsequence. Let $n_0$ be the first index where $a_{n_0} \in D_0$. Given $n_k$, we'll define $n_{k+1}$ as the first index greater than $n_k$ such that $a_{n_{k+1}} \in D_{k+1}$. We can pick such an element since $D_{k+1}$ has infinitely many sequence members, and requiring that $n_{k+1} > n_k$ only gets rid of finitely many sequence members. This gives us a subsequence $\seq{a}[n_k][k] \in \mathbb{C}$ such that $a_{n_k} \in D_k$. Therefore $\modulus{\tilde{a}-a_{n_k}} < \frac{1}{2^k}$. Since the right hand side can be made as small as we want, so can the left hand side. Therefore, the subsequence converges to $\tilde{a}$. 
+Let $\seq{a} \in \C$ be some sequence, and let $\tilde{a}$ be an accumulation point which doesn't appear within the sequence. We'll define a sequence of disks $D_n = \disk{\tilde{a}}{2^{-n}}$. These form a nested sequence of disks: $D_0 \supseteq D_1 \supseteq D_2 \ldots$ Now we'll show that each disk contains infinitely many sequence members. Assume for the sake of contradiction that some $D_n$ contains only finitely many sequence members. Since none of these sequence members are equal to $\tilde{a}$, they are all some positve distance away from it. We can take the minimum distance, which we'll call $\varepsilon$, and look at $D_M$, where $M \geq \log_2 (\varepsilon)$. This disk has a radius less than or equal to $\varepsilon$, so it does not contain any sequence members. But this would contradict $\tilde{a}$ being an accumulation point.\\
+Now that we've established that each disk contains infinitely many elements, we can begin constructing a subsequence. Let $n_0$ be the first index where $a_{n_0} \in D_0$. Given $n_k$, we'll define $n_{k+1}$ as the first index greater than $n_k$ such that $a_{n_{k+1}} \in D_{k+1}$. We can pick such an element since $D_{k+1}$ has infinitely many sequence members, and requiring that $n_{k+1} > n_k$ only gets rid of finitely many sequence members. This gives us a subsequence $\seq{a}[n_k][k] \in \C$ such that $a_{n_k} \in D_k$. Therefore $\modulus{\tilde{a}-a_{n_k}} < \frac{1}{2^k}$. Since the right hand side can be made as small as we want, so can the left hand side. Therefore, the subsequence converges to $\tilde{a}$. 
 \end{proof}
 \subsubsection{Cauchy Sequences and Completeness}
 \begin{definition}[Cauchy Sequence]
@@ -331,8 +338,8 @@ Since $\seq{a}$ is Cauchy, we can pick a positive $\varepsilon$ and get a cutoff
 \begin{definition}[Completeness]
 A set $X$ with a metric defined on it is called \emph{complete} if every Cauchy sequence in the set converges to a point in the set.
 \end{definition}
-\begin{theorem}[Completeness of $\mathbb{C}$]
-The set of all complex numbers,  $\mathbb{C}$, is complete.
+\begin{theorem}[Completeness of $\C$]
+The set of all complex numbers,  $\C$, is complete.
 \end{theorem}
 \begin{proof}
 Take any Cauchy sequence $\seq{a}$. Because \hyperlink{Cauchy Sequences are Bounded}{Cauchy sequences are bounded}, we can apply the \hyperlink{Bolzano-Weierstrass Theorem}{Bolzano-Weierstrass theorem} and find a convergent subsequence, $\seq{a}[n_k][k]$. This sequence converges to a complex number, $a$. Now we want to show that our original sequence converges to $a$ as well.
@@ -352,7 +359,7 @@ Suppose $\seq{a} \in Y$ is a Cauchy sequence. Since $Y \subseteq X$, it is also 
 The notions of \emph{connectedness} and \emph{compactness} are somewhat subtle topological concepts, but they are extremely useful in proofs. Fortunately, they are much easier to understand in the real or complex numbers then they are in more pathological topological spaces. We'll start with connectedness, as it's the easier of the two to understand.
 \subsubsection{Connectedness}
 \begin{definition}[Connected Set]
-A set $X \subseteq \mathbb{C}$ is called \emph{connected} if there do not exist two sets $A$ and $B$ with the following properties:
+A set $X \subseteq \C$ is called \emph{connected} if there do not exist two sets $A$ and $B$ with the following properties:
 \begin{enumerate}
 \item $A$ and $B$ are open \emph{relative to} $X$.
 \item Neither $A$ nor $B$ are empty.
@@ -369,14 +376,14 @@ We'll quickly demonstrate that the relative complement of a relatively closed se
 To show that the two new definitions of connectedness are equivalent to our original definition, we'll instead show that they give the same notion of what it means for a set to be \emph{disconnected}, i.e. not connected. Suppose $V$ is disconnected via our original definition. Then it can be nontrivially decomposed into disjoint relatively open sets: $V = A \cup B$. Since $B$ is open relative to $V$, $V \setminus B$ is closed relative to $B$. But since $A$ and $B$ are disjoint and their union is exactly $V$, $V \setminus B = A$. Thus, we've found a nontrivial relatively clopen set. Likewise, if we have a nontrival relatively clopen set, its complement will be relatively open, and we've found a nontrivial decomposition into relatively open sets. The same reasoning shows that a nontrivial decomposition into relatively closed sets is equivalent to the exsitence of a nontrivial relatively clopen set. Thus, all definitions agree on what constitutes a disconnected set, so they must agree on what doesn't constitute a disconnected set, i.e. what constitutes a connected set.
 \end{proof}
 \begin{lemma}[Connected Subsets of Reals]
-A subset of $\mathbb{R}$ is connected iff it is some sort of interval (open, closed, half-open).
+A subset of $\R$ is connected iff it is some sort of interval (open, closed, half-open).
 \end{lemma}
 \begin{proof}
-We'll first prove that if a subset of the reals $E$ is connected, then it is an interval. Since $E$ is a subset of $\mathbb{R}$, it has an infimum and a supremum, although the infimum may be $-\infty$ and the supremum may be $\infty$. Any point $p \in E$ is greater than or equal to the supremum and less than or equal to the infimum. Suppose there exists some point $p$ which is strictly between the infimum and the supremum that is not in the set $E$. Then we can write $E$ as the union of two relatively open sets: $(-\infty, p) \cap E$ and $(p, \infty) \cap E$ have a union of $(\mathbb{R} \setminus \{p\}) \cap E = E$. Because $E$ is connected, one of these sets must be empty. If the left set is empty, then there are no points in $E$ less than $p$, meaning $p$ is a lower bound. But this contradicts the assumption that $p$ was strictly greater than the infimum. Similarly, the right hand set cannot be empty, so $E$ contains all points between its infimum and supremum, making it an interval.\\
+We'll first prove that if a subset of the reals $E$ is connected, then it is an interval. Since $E$ is a subset of $\R$, it has an infimum and a supremum, although the infimum may be $-\infty$ and the supremum may be $\infty$. Any point $p \in E$ is greater than or equal to the supremum and less than or equal to the infimum. Suppose there exists some point $p$ which is strictly between the infimum and the supremum that is not in the set $E$. Then we can write $E$ as the union of two relatively open sets: $(-\infty, p) \cap E$ and $(p, \infty) \cap E$ have a union of $(\R \setminus \{p\}) \cap E = E$. Because $E$ is connected, one of these sets must be empty. If the left set is empty, then there are no points in $E$ less than $p$, meaning $p$ is a lower bound. But this contradicts the assumption that $p$ was strictly greater than the infimum. Similarly, the right hand set cannot be empty, so $E$ contains all points between its infimum and supremum, making it an interval.\\
 Now for the converse. Suppose $I$ is an interval of some sort, and assume for the sake of contradiction it can be written as $A \cup B$, where $A$ and $B$ are disjoint, nonempty, and relatively closed. Since they are relatively closed, we can write them as intersections of the interval with closed sets: $A = \tilde{A} \cap I, B = \tilde{B} \cap I$. Pick some points $a_0 \in A$ and $b_0 \in B$. Since the sets are disjoint, we can assume without loss of generality that $a_0 < b_0$. We will now turn this pair of points into a sequence of collapsing intervals. We are given the closed interval $[a_n, b_n]$ where $a_n \in A$ and $b_n \in B$ and want to find $[a_{n+1}, b_{n+1}]$. To do this, we bisect our given interval. The midpoint is either in $A$ or $B$. Since one of the endpoints is in $A$ and the other in $B$, we pick whichever of the two intervals has a left endpoint in $A$ and a right endpoint in $B$. By the \hyperlink{Collapsing Intervals Lemma}{collapsing intervals lemma}, there is exactly one point in all of these intervals, which we'll call $c$, which satisfies $a_n \leq c \leq b_n$ for all $n$. Because the intervals are collapsing, the $a_n$ form a monotonically increasing sequence. The supremum of all the $a_n$ must be $c$, because if there were a smaller lower bound, it would appear in the intersection of the intervals. Therefore, by the \hyperlink{Monotone Sequence Theorem}{monotone sequence theorem}, $a_n \to c$. Similar logic shows that $b_n \to c$. But since \hyperlink{Sequences and Accumulation Points}{$\tilde{A}$ and $\tilde{B}$ are closed}, $c$ is in both $\tilde{A}$ and $\tilde{B}$. But because $c$ is between two points in the interval, it is in the interval, and therefore in $A\cap B$. This contradicts our assumption that $A$ and $B$ were disjoint, so the interval must be connected. 
 \end{proof}
 \begin{definition}[Region]
-A set $X \subseteq \mathbb{C}$ is called a \emph{region} if it is nonempty, connected, and open. This is written $\region{U}$.
+A set $X \subseteq \C$ is called a \emph{region} if it is nonempty, connected, and open. This is written $\region{U}$.
 \end{definition}
 \begin{theorem}[Fundamental Theorem of Regions]
 Suppose we have an equivalence relation $\sim$ between points in a region $\region{U}$. Suppose this equivalence relation also has the property that if $\disk{a}{\epsilon} \subseteq U$ then for all $z \in \disk{a}{\epsilon}, z\sim a$. Then for any two points $p,q \in U, p\sim q$.
@@ -398,12 +405,12 @@ Let $X$ be any set, and pick some $a \in X$. Define $C_X(a)$ as the union of all
 For the previous logic to hold, we need to show that the $C_X$ sets are actually connected. Suppose there exists an $a \in X$ such that $C_X(a)$ is disconnected. Then there exist relatively open nonempty sets $A, B$ whose union is $C_X(a)$ and whose intersection is $\emptyset$. Without loss of generality, let $a \in A$. Since $B$ is nonempty, there exists a $b \in B$. Since $b \in C_X(a)$ and $C_X(a)$ is the union of all connected subsets of $X$ containing $A$, there exists a connected subset of $X$ called $X_0$ such that $a, b \in X_0$. However, we know that $X_0 = (X_0 \cap A) \cup (X_0 \cap B)$ since $X_0$ is a subset of $C_X(a)$. Since $A$ and $B$ are open relative to $C_X(a)$ and $X_0 \subseteq C_X(a)$, the sets $X_0 \cap A$ and $X_0 \cap B$ are relatively open. They are also disjoint since $A$ and $B$ are disjoint. Since $a \in X_0 \cap A$ and $b \in X_0 \cap B$, these sets are nonempty. This contradicts the connectedness of $X_0$. Therefore, $C_X(a)$ has to be connected.
 \end{proof}
 \subsubsection{Compactness and Sequential Compactness}
-There are two separate, but deeply connected notions of what it means for a set to be \emph{compact}: compactness and sequential compactness. Both of these are generalizations of the notion of a closed and bounded set. One of the most important facts about the topology of $\mathbb{R}^n$ and $\mathbb{C}^n$ is that these notions are all equivalent, which is formalized in the famous \emph{Heine-Borel Theorem}. We'll start with sequential compactness, as it's easier to understand.
+There are two separate, but deeply connected notions of what it means for a set to be \emph{compact}: compactness and sequential compactness. Both of these are generalizations of the notion of a closed and bounded set. One of the most important facts about the topology of $\R^n$ and $\C^n$ is that these notions are all equivalent, which is formalized in the famous \emph{Heine-Borel Theorem}. We'll start with sequential compactness, as it's easier to understand.
 \begin{definition}[Sequential Compactness]
 A set $X$ is called \emph{sequentially compact} if for every $\seq{a} \in X$ there exists a subsequence $\seq{a}[n_k][k] \in X$ which converges to a point in $X$.
 \end{definition}
 \begin{theorem}[Sequential Compactness Theorem]
-A set $X \subseteq \mathbb{C}$ is sequentially compact iff it is closed and bounded.
+A set $X \subseteq \C$ is sequentially compact iff it is closed and bounded.
 \end{theorem}
 \begin{proof}
 First, we'll show that sequentially compact sets are closed and bounded. If $X$ is not closed, then it's missing at least one limit point. We can simply pick a sequence in $X$ that converges to this limit point, and we've found a sequence that does not have a subsequence which converges to a point in $X$. Similarly, suppose $X$ was unbounded. We can then pick a sequence such that $\modulus{a_n} > n$. We can see this sequence is not Cauchy: $\modulus{a_{n+1}-a_n} \geq \modulus{a_{n+1}}-\modulus{a_n} > 1$. Since \hyperlink{Convergent Sequences are Cauchy}{every convergent sequence must be Cauchy}, this sequence does not converge.\\
@@ -429,23 +436,23 @@ Let $\mathcal{G}$ be an open cover of $S$. The open cover is made up of sets whi
 Now, since $K$ is compact, we can pick a finite subcover of $\tilde{\mathcal{G}}$. Since the union of all the sets in this subcover is $K$, the union contains $S$ as well. Since no point in $S$ is in $K\setminus S$, we still would have $S$ in the union of all sets in this finite subcover except for $K \setminus S$. Finally, since all of these sets are open relative to $K$, we can intersect them with $S$ to get a finite subcover of $S$. Therefore, $S$ is compact.
 \end{proof}
 \begin{theorem}[Heine-Borel Theorem]
-A set $X \subseteq \mathbb{C}$ is compact iff it is closed and bounded.
+A set $X \subseteq \C$ is compact iff it is closed and bounded.
 \end{theorem}
 \begin{proof}
-First, we'll prove that compactness implies that the set is closed and bounded. By the \hyperlink{Sequential Compactness Theorem}{sequential compactness theorem}, we know that a set is closed and bounded iff it is sequentially compact. Thus, we can alternatively show that every compact set is sequentially compact. Assume for the sake of contradiction that there exists a $K \subseteq \mathbb{C}$ which is compact but not sequentially compact. If it is not sequentially compact, there exists a $\seq{a} \in K$ with no convergent subsequence. Pick any $z \in K$. Note that $z$ cannot be an accumulation point of the sequence, since if it were we could find a subsequence converging to $z$. Therefore, there exists a $\varepsilon_z$ such that $\disk{z}{\varepsilon_z}$ contains no points from the sequence except possibly $z$ itself. Now consider the collection of all of these disks for all $z \in K$. This is an open cover of $K$. Since each disk contains at most one sequence element, every finite subcollection of this open cover will contain only finitely many sequence elements. Therefore, this open cover cannot have a finite subcover, since any finite subcollection of our open cover doesn't contain all of the $a_n$, instead containing only finitely many of them. This is a contradiction, so every compact set must be sequentially comapct.\\
+First, we'll prove that compactness implies that the set is closed and bounded. By the \hyperlink{Sequential Compactness Theorem}{sequential compactness theorem}, we know that a set is closed and bounded iff it is sequentially compact. Thus, we can alternatively show that every compact set is sequentially compact. Assume for the sake of contradiction that there exists a $K \subseteq \C$ which is compact but not sequentially compact. If it is not sequentially compact, there exists a $\seq{a} \in K$ with no convergent subsequence. Pick any $z \in K$. Note that $z$ cannot be an accumulation point of the sequence, since if it were we could find a subsequence converging to $z$. Therefore, there exists a $\varepsilon_z$ such that $\disk{z}{\varepsilon_z}$ contains no points from the sequence except possibly $z$ itself. Now consider the collection of all of these disks for all $z \in K$. This is an open cover of $K$. Since each disk contains at most one sequence element, every finite subcollection of this open cover will contain only finitely many sequence elements. Therefore, this open cover cannot have a finite subcover, since any finite subcollection of our open cover doesn't contain all of the $a_n$, instead containing only finitely many of them. This is a contradiction, so every compact set must be sequentially comapct.\\
 Now we'll show that closed and bounded sets are sequentially compact. By a \hyperlink{Closed Subsets of Compact Sets}{previous lemma}, we know that any closed subset of a compact set is compact. Suppose $S$ is a closed and bounded set. Since it is bounded, it can be put in a disk centered at zero. This disk can then be put inside a \emph{closed tile}, which is a set consisting of all points whose real parts are in some closed interval and whose imaginary parts are in some other closed interval. We'll call this tile $T_0$. If we can show that every closed tile is compact, we'll show that every closed and bounded set is compact. Assume for contradiction that $T_0$ is not compact. This means that some open cover of $T_0$ does not have a finite subcover. Bisect the tile both horizontally and vertically to get four subtiles. Our open cover of these four tiles cannot have a finite subcover for each of them, since that would mean we'd have a finite subcover for the whole tile. Let $T_1$ be any of the tiles that doesn't have a finite subcover. Now we continue this process creating a sequence of collapsing tiles $T_n \supset T_{n+1}$ with each tile not having a finite subcover. By the \hyperlink{Collapsing Intervals Lemma}{collapsing intervals lemma} applied to both the real and imaginary parts, there is exactly one complex number in every subtile. Call this point $\tilde{z}$. Now since $\tilde{z} \in T_0$, there must be an open set $U$ that is a member of the subcover and which contains $\tilde{z}$. Since $U$ is open, there is some $\disk{\tilde{z}}{\varepsilon} \subseteq U$. Since the boxes can be made arbitrarily small, eventually some $T_k$ will be completely inside this disk, which means it will be inside of $U$. But we said that $T_k$ had to be covered by infinitely many sets in the open cover, and yet we've found a single set in the open cover $U$ which will cover $T_k$. This is a contradiction, so the open cover must have a finite subcover. This means that every tile is compact, and therefore every closed and bounded set is compact.
 \end{proof}
 \begin{corollary}[Compact Subsets of the Reals]
-Every compact subset $K \subseteq \mathbb{R}$ has a minimum and a maximum.
+Every compact subset $K \subseteq \R$ has a minimum and a maximum.
 \end{corollary}
 \begin{proof}
 Since $K$ is compact, it's closed and bounded. Since it's bounded, it has a supremum, which we'll call $s$. Note that $s$ is a limit point of $K$ because if there were some open interval centered at $s$ which did not contain any point of $K$, we could find an upper bound of $K$ smaller than the supremum. But since $K$ is closed, $s \in K$. The same argument shows that the greatest lower bound is also in $K$.
 \end{proof}
 \begin{definition}[Distance Between Sets]
-If $A, B \subseteq \mathbb{C}$ are two sets, the \emph{distance} between them is simply the infimum of the distances between $a \in A$ and $b \in B$.
+If $A, B \subseteq \C$ are two sets, the \emph{distance} between them is simply the infimum of the distances between $a \in A$ and $b \in B$.
 \end{definition}
 \begin{theorem}[Distance Between Compact and Closed Sets]
-Suppose $A$ is a compact subset of $\mathbb{C}$ and $B$ is a closed subset of $\mathbb{C}$. If $A \cap B = \emptyset$, then the distance between the two sets is nonzero.
+Suppose $A$ is a compact subset of $\C$ and $B$ is a closed subset of $\C$. If $A \cap B = \emptyset$, then the distance between the two sets is nonzero.
 \end{theorem}
 \begin{proof}
 Suppose that we have a compact and closed set such that the distance between them is zero. Since the distance between two sets is the infimum of the distance between points in one set and points in the other set, we can always find a $A \in A$ and a $b \in B$ such that $\modulus{a-b} < \varepsilon$ for any $\varepsilon > 0$. If this were not the case, we'd have found a positive upper bound on the distances between pairs of points in the sets, and therefore the distance between the sets would be nonzero. Given this, we can pick sequences $\seq{a} \in a$ and $\seq{b} \in B$ such that $\modulus{a_n - b_n} < \frac{1}{2^n}$. By the \hyperlink{Squeeze Theorem}{squeeze theorem}, $\lim_{n\to\infty}\modulus{a_n -b_n} = 0$. Since $\seq{a}$ is a sequence in a compact set, by \hyperlink{Heine-Borel Theorem}{Heine-Borel} there exists a subsequence $\seq{a}[n_k][k]$ which converges to $a \in A$. We have:
@@ -466,10 +473,10 @@ Suppose $\fn{f}{X}{Y}$ is a function between two sets which are both subsets of 
 Suppose $\fn{f}{X}{Y}$ is a function between two sets which are both subsets of larger topological spaces. Suppose $p \in \overline{X}$. Then we write $\lim_{x \to p} f(x) = L$ iff given any sequence $\seq{a} \in X\setminus \{p\}$ which converges to $p$ the sequence $b_n = f(a_n)$ converges to $L$.
 \end{definition}
 \begin{definition}[Metric Limit of a Function]
-Suppose $\fn{f}{X\subseteq\mathbb{C}}{\mathbb{C}}$ is a function. Suppose $p \in \overline{X}$. Then we write $\lim_{x \to p} f(x) = L$ iff for every $\varepsilon > 0$ there exists a $\delta > 0$ such that $(x \in X) \land (0<\modulus{x-p}< \delta) \implies \modulus{f(x)-L} < \varepsilon$.
+Suppose $\fn{f}{X\subseteq\C}{\C}$ is a function. Suppose $p \in \overline{X}$. Then we write $\lim_{x \to p} f(x) = L$ iff for every $\varepsilon > 0$ there exists a $\delta > 0$ such that $(x \in X) \land (0<\modulus{x-p}< \delta) \implies \modulus{f(x)-L} < \varepsilon$.
 \end{definition}
 \begin{theorem}[Equivalence of Limit Types for Functions]
-If $\fn{f}{X\subseteq\mathbb{C}}{\mathbb{C}}$ is a function, then it has a topological limit of $L$ at $p \in \overline{X}$ iff it has a sequential limit of $L$ at $p \in \overline{X}$ iff it has a metric limit of $L$ at $p \in \overline{X}$.
+If $\fn{f}{X\subseteq\C}{\C}$ is a function, then it has a topological limit of $L$ at $p \in \overline{X}$ iff it has a sequential limit of $L$ at $p \in \overline{X}$ iff it has a metric limit of $L$ at $p \in \overline{X}$.
 \end{theorem}
 \begin{proof}
 \\(Topological $\implies$ Metric): Suppose $\lim_{x \to p} f(x) = L$ in the topological sense. We want to show it has a metric limit of $L$ as well. We are given a $\varepsilon$, and are tasked with finding the corresponding $\delta$. Since we know the function converges topolgoically, we can pick a neighborhood $V = \disk{L}{\varepsilon}$. We know there is a corresponding relatively punctured neighborhood $U$. Since $U$ is a punctured neighborhood relative to $X$, we can write it as $U = \tilde{U} \cap X$, where $\tilde{U}$ is a punctured neighborhood of $p$. Since $\tilde{U}$ is a punctured neighborhood of $p$, it contains some punctured disk $\pdisk{p}{\delta} \subseteq \tilde{U}$. $f[U]\subseteq V$ means that $x \in U \implies f(x) \in V$. Since we chose $V$ to be a particular disk, we can rewrite this as $x \in U \implies \modulus{f(x)-L} < \varepsilon$. We can rewrite the left hand side to get $(x \in X) \land (x \in \tilde{U}) \implies \modulus{f(x)-L} < \varepsilon$. Since $0 < \modulus{x-p}< \delta \implies x \in \tilde{U}$, we have $(x \in X) \land (0 < \modulus{x-p} < \delta) \implies \modulus{f(x)-L} < \varepsilon$. Thus, we have that the metric limit of $f$ at $p$ is $L$ if the topological limit of $f$ at $p$ is $L$.\\
@@ -477,13 +484,13 @@ If $\fn{f}{X\subseteq\mathbb{C}}{\mathbb{C}}$ is a function, then it has a topol
 \\(Sequential $\implies$ Topological): Suppose $\lim_{x \to p} f(x) = L$ in the sequential sense. We want to show it has a topological limit of $L$ as well. Suppose for the sake of contradiction the topological limit is not $L$. That is, there exists some $V$ which is a neighborhood of $L$ such that the image of every relative punctured neighborhood $U \in \rpnbhd{p}{X}$ is not a subset of $V$. Therefore, for any $U \in \rpnbhd{p}{X}$, there exists a point $x_U \in U$ such that $f(x_U) \not\in V$. We'll create a sequence of relative punctured neighborhoods $U_n = \pdisk{p}{1/n} \cap X$. By our previous result, we can pick a sequence of points $x_{U_n}$ such that $f(x_{U_n}) \not\in V$. Since for a sequence to converge to a point it must eventually be inside any neighborhood of that point, $f(x_{U_n})$ doesn't converge to $L$. But because $x_{U_n} \in \pdisk{p}{1/n} \cap X$, we have that $0 < \modulus{x_{U_n}-p} < 1/n$. Since the RHS goes to 0, by the \hyperlink{Squeeze Theorem}{squeeze theorem} so does the LHS, and therefore $x_{U_n} \to p$. Since this sequence converges to $p$ and is in $X\setminus\{p\}$, $f(x_{U_n}) \to L$. But we previously showed that this couldn't be the case. Therefore, there cannot be such a neighborhood $V$, meaning that the limit of $f$ at $p$ is $L$ in the topological sense. 
 \end{proof}
 \begin{theorem}[Uniqueness of Limits for Functions]
-If $\fn{f}{X\subseteq\mathbb{C}}{\mathbb{C}}$ has a limit of $L$ at $p \in \overline{X}$ then it has no other limit.
+If $\fn{f}{X\subseteq\C}{\C}$ has a limit of $L$ at $p \in \overline{X}$ then it has no other limit.
 \end{theorem}
 \begin{proof}
 This follows directly from the uniqueness of limits for sequences and the sequential definition of the limit of a function.
 \end{proof}
 \begin{theorem}[Limit Laws for Functions]
-If $\fn{f}{X\subseteq\mathbb{C}}{\mathbb{C}}$ has a limit of $L$ at $p \in \overline{X}$ and $\fn{g}{X\subseteq\mathbb{C}}{\mathbb{C}}$ has a limit of $M$ at $p \in \overline{X}$ then the following apply:
+If $\fn{f}{X\subseteq\C}{\C}$ has a limit of $L$ at $p \in \overline{X}$ and $\fn{g}{X\subseteq\C}{\C}$ has a limit of $M$ at $p \in \overline{X}$ then the following apply:
 \begin{enumerate}
 \item $$\lim_{x \to p} (f(x)+g(x)) = L+M$$
 \item $$\lim_{x \to p} (f(x)g(x)) = LM$$
@@ -493,10 +500,30 @@ provided $M \neq 0$.
 \item $$\lim_{x \to p} \modulus{f(x)} = \modulus{L}$$
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+These results follow rather directly from the sequential definition of the limit of a function and the limit laws of sequences. For instance, given any sequence of $x_n \in X\setminus\{p\}$ converging to $p$, the limit of $f(x_n)+g(x_n)$ is the sum of the limits, i.e. $L+M$. However, the reciprocal law introduces one minor complication: the domain of $\frac{1}{g(x)}$ can be smaller than the domain of $g(x)$. If we have a sequence converging to $p$ which never hits a zero of $g(x)$, and therefore is in the domain of $\frac{1}{g(x)}$, we can use the reciprocal law to show that the limit of the output sequence is $\frac{1}{M}$. However, we need to show that there actually \emph{exist} such sequences. Suppose every sequence which approaches $p$ contains a zero of $g(x)$. Then for any disk around $p$, there exists a zero of $g(x)$ inside it. If there was some disk where this wasn't the case, we could have a sequence in that disk approach $p$ without touching a zero of $g(x)$. We can then choose a sequence of disks whose radii go to zero, and pick a zero of $g(x)$ from each disk to get a sequence of points going to $p$. Since plugging any sequence member into $g$ gives zero, the limit of the output sequence is zero, contradicting our assumption that $M \neq 0$. Therefore, there are some sequences that never hit a zero, and therefore the limit rule applies.
+\end{proof}
 \subsubsection{Pointwise and Uniform Limits of Sequences of Functions}
+Just as we looked at the limiting behavior of sequences of numbers, we can also look at the limiting behavior of sequences of \emph{functions}. We'll denote the set of all functions from one set $X$ to another set $Y$ as $X^Y$. There are two basic types of convergence we'll want to briefly examine: pointwise and uniform.
+\begin{definition}[Pointwise Convergence]
+A sequence of functions $\seq{f} \in X^Y$ (where $Y$ is a topological space) is said to have a \emph{pointwise limit} of $\fn{g}{X}{Y}$ if for every $x \in X$ $\lim_{n\to\infty} f_n (x) = g(x)$
+\end{definition}
+If the set $\C$ is the complex plane, then it is easy to see that all the limit laws for sequences hold for pointwise limits of functions, since the pointwise limit of a function is simply a collection of limits of sequences in the complex plane. However, given that we are considering limits of sequences in a set, we might wonder if it's possible to define the limits in terms of a topology on that set. This will lead us to our second definition of a limit of a sequence of functions, called \emph{uniform convergence}.
+\begin{definition}[Supremal Norm]
+Given a function $\fn{f}{X}{\C}$ whose range is a bounded set, we can define its \emph{supremal norm} as follows:
+\begin{align*}
+\norm{f}_\infty = \sup_{x \in X} \modulus{f(x)}
+\end{align*}
+\end{definition}
+This gives a notion of size, or norm, for functions which map into the complex plane. It obeys most of the properties of the modulus of complex numbers, and we can thus define another notion of convergence:
+\begin{definition}[Uniform Convergence]
+A sequence of functions $\seq{f} \in X^\C$ is said to have a \emph{uniform limit} of $\fn{g}{X}{\C}$ if $\lim_{n\to\infty} \norm{f_n - g}_\infty = 0$
+\end{definition}
+Since uniform convergence doesn't come up much in complex analysis, we will not prove the standard limit laws here. The reader may wish to prove them as an excercise, in which case we should note that although the proofs are mostly the same, there is a slight caveat in that the supremal norm of a product is not always the product of the supremal norms. In fact, $\norm{fg}_\infty \leq \norm{f}_\infty \norm{g}_\infty$. We should also note that uniform convergence implies pointwise convergence, but the converse is not always true.
 \subsection{Continuity}
-\subsubsection{Equivalent Formulations of Continuous Functions}
-\subsubsection{Continuous Images of Connected and Compact Sets}
+\subsubsection{Basic Properties of Continuous Functions}
+\subsubsection{Topological Properties of Continuous Functions}
+\subsubsection{Uniform Continuity}
 \subsection{The Theory of Paths}
 While writing this book, we came to realize that a surprisingly large amount of complex analysis is based on the topological and analytical properties of \emph{paths} in the complex plane. Indeed, much of algebraic topology, which we will examine closely in Chapter 7, is based on characterizing topological spaces based on what types of paths (and their close relatives, called \emph{patches}) the topological space admits. For this reason, we thought that the rigorous development of the theory of paths should be its own subsection.
 \subsubsection{Topological Results on Paths}
@@ -544,13 +571,13 @@ A set $X$ is called \emph{path connected} if for any two points in the set there
 If a set is path connected, then it is connected.
 \end{theorem}
 \begin{corollary}[The Complex Plane is Connected]
-The complex plane $\mathbb{C}$ is connected
+The complex plane $\C$ is connected
 \end{corollary}
 \begin{corollary}
 The only subsets of the complex plane which are both open and closed (sometimes called \emph{clopen}) are the empty set and the complex plane itself.
 \end{corollary}
 \begin{proof}
-Suppose $X \subseteq \mathbb{C}$ is a clopen set. Since it is both open and closed, its complement $X^C$ is also both open and closed. We therefore have that $X$ and $X^C$ are open, their union is the whole complex plane, and their intersection is the empty set. But since the complex plane is connected, the only way this could happen is if one of the sets was the empty set. The complement of the empty set is the whole complex plane.
+Suppose $X \subseteq \C$ is a clopen set. Since it is both open and closed, its complement $X^C$ is also both open and closed. We therefore have that $X$ and $X^C$ are open, their union is the whole complex plane, and their intersection is the empty set. But since the complex plane is connected, the only way this could happen is if one of the sets was the empty set. The complement of the empty set is the whole complex plane.
 These are the only clopen subsets of the complex plane.
 \end{proof}
 \begin{theorem}[Regions are Path Connected]
@@ -583,7 +610,7 @@ Every region is a zig-zag connected set.
 \subsubsection{Winding Numbers of Paths}
 The concept of the \emph{index} or \emph{winding number} of a path with respect to a point is an essential part of many of the results we will prove in later sections. The idea of a winding number is often first analyzed in the context of only those \emph{loops} satisfying certain smoothness conditions which we will examine in our section on contours. However, the notion of a winding number is not unique to loops, nor does it require the path to be smooth. Therefore, we thought that we should introduce the idea in the most general context, and prove the typical results on the winding numbers of smooth loops as theorems in later sections.
 \begin{definition}[Winding Number]
-Suppose $\gamma$ is a path in $\mathbb{C}$, and suppose $z \in \mathbb{C}$ and $z \not\in \range{\gamma}$. If there exists a path in the \emph{reals} $\Theta$ which satisfies the following equation:
+Suppose $\gamma$ is a path in $\C$, and suppose $z \in \C$ and $z \not\in \range{\gamma}$. If there exists a path in the \emph{reals} $\Theta$ which satisfies the following equation:
 \begin{equation*}
 \frac{\gamma(t)-z}{\modulus{\gamma(t)-z}} = e^{i\Theta(t)}
 \end{equation*}

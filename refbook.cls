@@ -167,5 +167,7 @@
 \NewDocumentCommand {\fn} {m m m O{}}{\ifstrempty{#4}{{#1} \colon {#2} \longrightarrow {#3}}{{#1} \colon {#2} \xlongrightarrow{#4} {#3}}}
 \newcommand{\rpart}[1]{\operatorname{Re}({#1})}
 \newcommand{\ipart}[1]{\operatorname{Im}({#1})}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{\docformat}
